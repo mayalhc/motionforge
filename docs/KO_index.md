@@ -8,6 +8,12 @@
 
 MotionForge는 NVIDIA의 ARDY 모션 모델을 Blender 옆에서 실행하고, 결과를 일반 리그처럼 편집할 수 있는 키프레임으로 변환합니다. 캐릭터를 실시간으로 조종하거나, 반드시 거쳐야 할 포즈를 고정하거나, 모션을 내 캐릭터에 옮기거나, Cascadeur로 바로 전송할 수도 있습니다.
 
+![Cascadeur](assets/cascadeur.jpg)
+Please subscribe to Cascadeur via the link below. Thank you.
+
+https://cascadeur.com/?ref=chamiseul
+
+
 **0.2.0 신기능** — *Cascadeur로 전송*. 캐릭터 또는 애니메이션만 FBX 파일을 수동으로 주고받지 않고도 Cascadeur로 전송됩니다. [*Cascadeur로 전송하기*](#cascadeur로-전송하기)를 참조하세요.
 
 **추가 신기능** — 돌아오는 기능. **Cascadeur에서 받기**는 작업 결과를 보낸 리그로 되돌려줍니다. 전송 시 속도 그대로, 또는 원하는 속도로 가져올 수 있습니다. Team Fortress 2 Trifecta 리그처럼 여러 스켈레톤으로 구성된 리그는 전송 시 하나로 합쳐지므로 모자, 파우치, 무기가 함께 도착하고, Cascadeur의 Rig Mode도 자동으로 채워집니다. [*돌아오기*](#돌아오기)를 참조하세요.

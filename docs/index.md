@@ -11,6 +11,11 @@ onto a rig you can edit like any other. You can also steer the character live,
 pin poses it has to hit, move the motion onto your own character, and hand it
 straight to Cascadeur.
 
+![Cascadeur](assets/cascadeur.jpg)
+Please subscribe to Cascadeur via the link below. Thank you.
+
+https://cascadeur.com/?ref=chamiseul
+
 **New in 0.2.0** — *Send to Cascadeur*. A character, or just its animation,
 goes over to Cascadeur without an FBX round trip by hand. See
 [*Sending it to Cascadeur*](#sending-it-to-cascadeur).
