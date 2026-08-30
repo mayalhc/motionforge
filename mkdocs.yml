@@ -1,0 +1,56 @@
+# 사이트 설정
+site_name: motionforge — User Guide
+site_url: http://127.0.0
+site_author: chamiseul
+
+# 테마 설정 (Material 테마 권장)
+theme:
+  name: readthedocs
+  highlightjs: true
+  collapse_navigation: false # 전체를 항상 펼침
+  sticky_navigation: true
+  navigation_depth: 4
+  titles_only: false
+
+extra_css:
+  - custom.css
+
+# --- 디자인 설정 (필요할 때 주석 해제) ---
+# palette:
+#   - scheme: slate # 다크 모드
+#     primary: indigo # 메인 색상
+#     accent: indigo # 강조 색상
+
+# --- 편리한 기능들 (필요할 때 주석 해제) ---
+# features:
+#   - navigation.tabs # 상단에 대메뉴 탭 생성
+#   - navigation.top # 위로 가기 버튼 생성
+#   - search.suggest # 검색어 자동 완성 추천
+#   - content.code.copy # 코드 블록 복사 버튼 생성
+
+# 네비게이션 (메뉴 구조)
+nav:
+  - motionforge Guide:
+    - "Welcome to motionforge": index.md # 상위 메뉴 클릭 시 바로 보일 파일
+    - "Strategy & Pipeline": groomforge.md
+#   - "Workflow": workflow.md
+#   - "Technical Manual": technical.md
+#   - "Troubleshooting (FAQ)": faq.md
+#   - "Final Export Checklist": checklist.md
+#   - 설치 방법: installation.md # 파일이 준비되면 주석 해제하세요.
+
+# 마크다운 확장 기능 (기능 강화)
+markdown_extensions:
+  - admonition # 노션의 '콜아웃'처럼 경고/정보 박스 생성
+  - tables # 표 지원
+  - pymdownx.details
+  - pymdownx.superfences
+
+# --- 이모지 및 특수기능 (추가 설치 필요할 수 있음) ---
+#   - pymdownx.emoji:
+#       emoji_index: !!python/name:material.extensions.emoji.twemoji
+#       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# 플러그인 설정
+plugins:
+  - search # 검색창 기능
