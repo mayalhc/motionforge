@@ -100,6 +100,8 @@ sidebar. It holds five panels, in the order you will use them.
 
 ### 3. Live Path — steer while it plays
 
+![start_live](assets/start_live.gif)
+
 | Control | What it does |
 | --- | --- |
 | **Live takes list** | One row per character in the run. **+** adds a row; each carries its own prompt, rig, seed and target. |
@@ -110,6 +112,8 @@ sidebar. It holds five panels, in the order you will use them.
 | **Bake / Discard** | Writes the held take as a real Action, or throws it away. |
 
 ### 4. Retarget — put the motion on your own character
+
+![retarget_live](assets/retarget_live.gif)
 
 | Control | What it does |
 | --- | --- |
@@ -123,6 +127,8 @@ sidebar. It holds five panels, in the order you will use them.
 | **Share With Characters** | Copies each take onto several characters at once (see below). |
 
 ### 5. Send to Cascadeur — hand the motion over
+
+![send_cas](assets/send_cas.gif)
 
 Always visible; it tells you what it needs rather than hiding until the right
 thing is selected.

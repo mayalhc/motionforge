@@ -80,6 +80,8 @@ MotionForge는 두 부분이 함께 작동합니다.
 
 ### 3. Live Path — 재생 중 실시간 조종
 
+![start_live](assets/start_live.gif)
+
 | 항목 | 설명 |
 | --- | --- |
 | **Live takes list** | 실행 중인 캐릭터당 한 행. **+**로 행 추가. 각 행은 고유한 프롬프트, 리그, 시드, 타겟을 가집니다. |
@@ -90,6 +92,8 @@ MotionForge는 두 부분이 함께 작동합니다.
 | **Bake / Discard** | 보유한 테이크를 실제 Action으로 쓰거나 삭제합니다. |
 
 ### 4. Retarget — 내 캐릭터에 모션 적용
+
+![retarget_live](assets/retarget_live.gif)
 
 | 항목 | 설명 |
 | --- | --- |
@@ -103,6 +107,8 @@ MotionForge는 두 부분이 함께 작동합니다.
 | **Share With Characters** | 여러 캐릭터에 한 번에 각 테이크를 복사합니다 (아래 참조). |
 
 ### 5. Send to Cascadeur — 모션 전달
+
+![send_cas](assets/send_cas.gif)
 
 항상 표시되며, 올바른 항목이 선택될 때까지 숨기지 않고 필요한 것을 안내합니다.
 
