@@ -80,7 +80,7 @@ MotionForge는 두 부분이 함께 작동합니다.
 
 ### 3. Live Path — 재생 중 실시간 조종
 
-![start_live](assets/start_live.gif)
+<video src="assets/start_live.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="start_live"></video>
 
 | 항목 | 설명 |
 | --- | --- |
@@ -93,7 +93,7 @@ MotionForge는 두 부분이 함께 작동합니다.
 
 ### 4. Retarget — 내 캐릭터에 모션 적용
 
-![retarget_live](assets/retarget_live.gif)
+<video src="assets/retarget_live.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="retarget_live"></video>
 
 | 항목 | 설명 |
 | --- | --- |
@@ -108,7 +108,7 @@ MotionForge는 두 부분이 함께 작동합니다.
 
 ### 5. Send to Cascadeur — 모션 전달
 
-![send_cas](assets/send_cas.gif)
+<video src="assets/send_cas.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="send_cas"></video>
 
 항상 표시되며, 올바른 항목이 선택될 때까지 숨기지 않고 필요한 것을 안내합니다.
 

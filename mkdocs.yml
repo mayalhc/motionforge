@@ -52,5 +52,8 @@ markdown_extensions:
 #       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 # 플러그인 설정
+hooks:
+  - hooks/media.py
+
 plugins:
   - search # 검색창 기능

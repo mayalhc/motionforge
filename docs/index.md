@@ -100,7 +100,7 @@ sidebar. It holds five panels, in the order you will use them.
 
 ### 3. Live Path — steer while it plays
 
-![start_live](assets/start_live.gif)
+<video src="assets/start_live.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="start_live"></video>
 
 | Control | What it does |
 | --- | --- |
@@ -113,7 +113,7 @@ sidebar. It holds five panels, in the order you will use them.
 
 ### 4. Retarget — put the motion on your own character
 
-![retarget_live](assets/retarget_live.gif)
+<video src="assets/retarget_live.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="retarget_live"></video>
 
 | Control | What it does |
 | --- | --- |
@@ -128,7 +128,7 @@ sidebar. It holds five panels, in the order you will use them.
 
 ### 5. Send to Cascadeur — hand the motion over
 
-![send_cas](assets/send_cas.gif)
+<video src="assets/send_cas.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="send_cas"></video>
 
 Always visible; it tells you what it needs rather than hiding until the right
 thing is selected.
