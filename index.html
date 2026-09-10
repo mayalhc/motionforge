@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="chamiseul" /><link rel="canonical" href="http://127.0.0/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Welcome to motionforge - motionforge — User Guide</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Welcome to motionforge";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> motionforge — User Guide
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">motionforge Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Welcome to motionforge</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setup-once">Setup, once</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-big-picture-in-30-seconds">The big picture, in 30 seconds</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-six-panels">The six panels</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-motionforge-connect-and-make-a-rig">1. MotionForge — connect and make a rig</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-text-to-motion-turn-words-into-animation">2. Text to Motion — turn words into animation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-live-path-steer-while-it-plays">3. Live Path — steer while it plays</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-motionbricks-walk-without-typing">4. MotionBricks — walk without typing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-retarget-put-the-motion-on-your-own-character">5. Retarget — put the motion on your own character</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-send-to-cascadeur-hand-the-motion-over">6. Send to Cascadeur — hand the motion over</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#motionbricks">MotionBricks</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#source-rig-vs-target-rig-plainly">Source rig vs. target rig, plainly</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-beginners-recipe-end-to-end">A beginner's recipe, end to end</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#words-youll-see-glossary">Words you'll see (glossary)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#your-first-animation">Your first animation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#takes">Takes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#chaining-takes">Chaining takes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#steering-it">Steering it</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#waypoints-go-through-here-at-this-time">Waypoints — go through here at this time</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pose-keys-look-like-this-on-this-frame">Pose keys — look like this on this frame</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#live-path-steer-while-it-plays">Live Path — steer while it plays</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#bake">Bake</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#roadmap-smpl-x-bodies">Roadmap: SMPL-X bodies</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-the-motion-stream">Step 3: the motion stream</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-unreal-plugin">The Unreal plugin</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#the-skeleton-to-receive-on">The skeleton to receive on</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#wiring-it-up">Wiring it up</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-4-standing-on-the-same-floor">Step 4: standing on the same floor</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#one-take-several-characters">One take, several characters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#moving-it-onto-your-own-character">Moving it onto your own character</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#watching-it-in-cascadeur-live">Watching it in Cascadeur, live</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sending-it-to-cascadeur">Sending it to Cascadeur</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-order-matters">The order matters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sending-onto-cascadeurs-own-character">Sending onto Cascadeur's own character</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#what-actually-crosses">What actually crosses</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#speed">Speed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rigs-built-out-of-several-skeletons">Rigs built out of several skeletons</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filling-cascadeurs-rig-mode">Filling Cascadeur's Rig Mode</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bringing-it-back">Bringing it back</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#timing">Timing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#settings-worth-knowing">Settings worth knowing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#models">Models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#where-the-model-weights-live">Where the model weights live</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-shared-text-encoder">The shared text encoder</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#why-the-text-encoder-runs-on-the-cpu">Why the text encoder runs on the CPU</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#in-a-browser-instead">In a browser instead</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#when-something-is-wrong">When something is wrong</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://mayalhc.github.io/GroomForge-Wiki/">All add-ons & guides</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">motionforge — User Guide</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">motionforge Guide</li>
+      <li class="breadcrumb-item active">Welcome to motionforge</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="motionforge">MotionForge</h1>
+<p>🇺🇸 English | <a href="KO_index/">🇰🇷 한국어</a></p>
+<p>Type what a character should do. Get an animation in Blender.</p>
+<p>MotionForge runs NVIDIA's ARDY motion model next to Blender and keys the result
+onto a rig you can edit like any other. You can also steer the character live,
+pin poses it has to hit, move the motion onto your own character, and hand it
+straight to Cascadeur.</p>
+<p><strong>New in 0.3.0</strong> — <strong>MotionBricks</strong>, a second way to move a character.
+Instead of typing a sentence, you pick how it moves — walking, sneaking,
+crawling, limping, dancing — and either point it a direction or drop a marker
+for it to walk to and stop. It arrives, turns to face the way you aimed the
+marker, and stands there. See <a href="#motionbricks"><em>MotionBricks</em></a>.</p>
+<p>MotionBricks needs no install console and no waiting: one folder, and the
+first walk is on screen in about half a second. It needs Blender 5.2 or newer.
+Everything else in MotionForge is unchanged.</p>
+<hr />
+<h2 id="setup-once">Setup, once</h2>
+<p><strong>1. Install the engine.</strong> Double-click <code>install.bat</code>. It makes a <code>.venv</code>
+folder here and puts everything in it — nothing else on the machine changes.
+It needs Python 3.12, Git, an NVIDIA GPU, and about 10 GB of disk.</p>
+<p><strong>1b. Or install MotionBricks instead.</strong> If you only want MotionBricks, skip step 1: there is nothing to build. Put its folder anywhere and point the add-on at it in step 3b. It needs Blender 5.2 or newer.</p>
+<p><strong>2. Install the add-on.</strong> In Blender: <code>Edit ▸ Preferences ▸ Add-ons ▸ Install</code>,
+pick the <code>motionforge</code> folder, tick it on.</p>
+<p><strong>3. Point it at the engine.</strong> Still in the add-on's preferences, set
+<strong>ARDY Python</strong> to the <code>.venv\Scripts\python.exe</code> that <code>install.bat</code> printed
+when it finished.</p>
+<p><strong>3b. Point it at MotionBricks.</strong> In the same preferences, set the <strong>MotionBricks Folder</strong> to the folder holding <code>bin</code>, <code>models</code> and <code>licenses</code>. It says straight away what it found. If you have not got it yet, <strong>Install MotionBricks</strong> fetches it — about 700 MB, with a progress bar in the same panel.</p>
+<p><strong>4. Get access to the text encoder.</strong> ARDY reads your prompt with a Meta
+Llama model that requires accepting a licence:</p>
+<ul>
+<li>accept it at <code>huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct</code></li>
+<li>run <code>huggingface-cli login</code> in a terminal and paste your token</li>
+</ul>
+<p>Press <code>N</code> in the 3D viewport and the <strong>MotionForge</strong> tab is there.</p>
+<hr />
+<h2 id="the-big-picture-in-30-seconds">The big picture, in 30 seconds</h2>
+<p>MotionForge is two pieces working together:</p>
+<ul>
+<li><strong>The engine</strong> — NVIDIA's ARDY model. It turns a sentence into animation frames.</li>
+<li><strong>The add-on</strong> — this one, running inside Blender. It builds a rig, plays the
+  frames on it, lets you steer and pin poses, and copies the result onto your
+  own character.</li>
+</ul>
+<p>Every animation first lands on a <strong>source rig</strong> that MotionForge builds (the
+<strong>Create Rig</strong> button). From there you can copy it onto any <em>other</em> armature —
+called a <strong>target rig</strong> — so the motion plays on your own character.</p>
+<hr />
+<h2 id="the-six-panels">The six panels</h2>
+<p>Press <code>N</code> in the 3D viewport and a <strong>MotionForge</strong> tab appears in the right-hand
+sidebar. It holds six panels, in the order you will use them.</p>
+<h3 id="1-motionforge-connect-and-make-a-rig">1. MotionForge — connect and make a rig</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model</strong></td>
+<td>Which ARDY skeleton to use. Keep <strong>Core</strong> — it covers nearly everything.</td>
+</tr>
+<tr>
+<td><strong>Text Encoder</strong></td>
+<td>Optional, but strongly recommended (see <em>The shared text encoder</em> below).</td>
+</tr>
+<tr>
+<td><strong>Connect ARDY</strong></td>
+<td>Loads the engine. The first run downloads several GB; wait for <strong>Ready</strong>. About a minute the first time, then about 5 seconds — it keeps the text encoder loaded between connections.</td>
+</tr>
+<tr>
+<td><strong>Create Rig</strong></td>
+<td>Builds an armature — this is your <strong>source rig</strong>, the skeleton the model will animate.</td>
+</tr>
+<tr>
+<td><strong>Generated Rigs</strong> list</td>
+<td>Every source rig you have made. <strong>Use \&lt;name&gt;</strong> makes one the active source.</td>
+</tr>
+<tr>
+<td><strong>Active source</strong></td>
+<td>The rig that current takes are generated onto.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-text-to-motion-turn-words-into-animation">2. Text to Motion — turn words into animation</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Takes</strong></td>
+<td>Your shots. <code>+</code> adds one, <code>−</code> removes the selected.</td>
+</tr>
+<tr>
+<td>— <strong>Source Rig</strong></td>
+<td>Which rig this take fills. Empty = the active source.</td>
+</tr>
+<tr>
+<td>— <strong>Prompt</strong></td>
+<td>A plain sentence, e.g. <em>"a person walks forward"</em>. Start with "a person" — that is how the model was taught.</td>
+</tr>
+<tr>
+<td>— <strong>Duration</strong></td>
+<td>Length in seconds.</td>
+</tr>
+<tr>
+<td>— <strong>Seed</strong></td>
+<td><code>-1</code> gives something new each time; a fixed number repeats the same result.</td>
+</tr>
+<tr>
+<td>— <strong>Continue</strong></td>
+<td>Start from the end of the take <em>above</em>, for one continuous performance.</td>
+</tr>
+<tr>
+<td><strong>Shared</strong></td>
+<td>Options applying to every take: <strong>Reduce Foot Skating</strong> (cleaner feet and lands exactly on your waypoints/poses — leave it on), <strong>Denoising Steps</strong> (fewer = faster and rougher), <strong>Prompt Strength</strong>, <strong>Constraint Strength</strong>.</td>
+</tr>
+<tr>
+<td><strong>Waypoints</strong></td>
+<td>"Be here at this frame" markers that lay out a route. <strong>Face Waypoint Direction</strong> also steers which way the character looks.</td>
+</tr>
+<tr>
+<td><strong>Pose Keys</strong></td>
+<td>"Look like this at this frame". Each gets its own editable copy of the rig.</td>
+</tr>
+<tr>
+<td><strong>Generate Take / Generate All</strong></td>
+<td>Make the selected take, or every ticked take.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-live-path-steer-while-it-plays">3. Live Path — steer while it plays</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Live takes list</strong></td>
+<td>One row per character in the run. <strong>+</strong> adds a row; each carries its own prompt, rig, seed and target.</td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+<td>The cone that character walks toward. The <strong>+</strong> beside it makes one. A row with no target just moves as its prompt says.</td>
+</tr>
+<tr>
+<td><strong>Start Live / Stop</strong></td>
+<td>Begins or ends live steering, for every row at once. <code>Esc</code> also stops it.</td>
+</tr>
+<tr>
+<td><strong>Stop After</strong></td>
+<td>Ends the run automatically after this many seconds. <code>0</code> runs until you stop it.</td>
+</tr>
+<tr>
+<td><strong>Face Target Direction</strong></td>
+<td>Powers the cone's rotation so the character can walk sideways, backwards, or round something while watching it.</td>
+</tr>
+<tr>
+<td><strong>Bake / Discard</strong></td>
+<td>Writes the held take as a real Action, or throws it away.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-motionbricks-walk-without-typing">4. MotionBricks — walk without typing</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Character list</strong></td>
+<td>Every MotionBricks character in the scene, one per row. The <strong>tick box</strong> decides who takes part; the highlighted row is the one you are editing.</td>
+</tr>
+<tr>
+<td><strong>+</strong> / <strong>−</strong></td>
+<td>Adds a character at the 3D cursor, or takes the selected one out of the list.</td>
+</tr>
+<tr>
+<td><strong>Eyedropper</strong></td>
+<td>Adds the selected armature to the list, if it is a MotionBricks character.</td>
+</tr>
+<tr>
+<td><strong>With a Body</strong></td>
+<td>A new character gets a simple mesh over its bones, weighted to the skeleton. Bones alone are hard to follow while a character walks around. Untick it for bones only.</td>
+</tr>
+</tbody>
+</table>
+<p>Each character carries its own settings, shown under the list:</p>
+<table>
+<thead>
+<tr>
+<th>Per character</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Style</strong></td>
+<td>How this one moves. Walking, slow, stealthy, scared, zombie, boxing, crawling on hands or elbows, happy dancing, limping, and walking with a gun. Also shown on its row, so a crowd reads at a glance.</td>
+</tr>
+<tr>
+<td><strong>Go</strong></td>
+<td><strong>In a Direction</strong> keeps going the way you set — and follows the 3D cursor while live. <strong>To a Target</strong> walks to an object of its own and stops, cursor or not.</td>
+</tr>
+<tr>
+<td><strong>Heading</strong></td>
+<td>Which way this one walks, when you chose a direction.</td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+<td>The object this one walks to. The <strong>+</strong> beside it makes one. Turn the object and the character faces that way on arrival.</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Metres per second. Leave it at zero to use the style's own pace. A style with no pace of its own, like <em>Idle</em>, stays where it is.</td>
+</tr>
+<tr>
+<td><strong>Seed</strong></td>
+<td>Changes where the stride begins. If a walk lands awkwardly, try another number.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Shared</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Duration</strong></td>
+<td>Seconds to make, for every ticked character.</td>
+</tr>
+<tr>
+<td><strong>Continue</strong></td>
+<td>Carry on from where the last one stopped, in the same animation.</td>
+</tr>
+<tr>
+<td><strong>Generate Motion</strong></td>
+<td>Makes it, for every ticked character at once. They start walking straight away — no keyframes are written yet.</td>
+</tr>
+<tr>
+<td><strong>Bake</strong></td>
+<td>Writes what you are watching as keyframes, for all of them.</td>
+</tr>
+<tr>
+<td><strong>Discard</strong></td>
+<td>Throws it away instead.</td>
+</tr>
+<tr>
+<td><strong>Steer With</strong></td>
+<td>How you drive them live: <strong>3D Cursor</strong> — shift-right-click anywhere and they walk there, facing the way they go — or <strong>Target Object</strong>, where each walks to its own.</td>
+</tr>
+<tr>
+<td><strong>Move Characters Too</strong></td>
+<td>Your own characters walk along with them, using the rows in <strong>Share With Characters</strong> below. They are posed, not keyed.</td>
+</tr>
+<tr>
+<td><strong>Lead</strong></td>
+<td>How many frames to keep planned ahead. Higher rides out a slow frame; lower answers the controls sooner.</td>
+</tr>
+<tr>
+<td><strong>Start Live</strong></td>
+<td>Walks now, steered as it goes. <code>Esc</code> stops it.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-retarget-put-the-motion-on-your-own-character">5. Retarget — put the motion on your own character</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td>The rig carrying the motion. Usually left as the generated rig.</td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+<td><em>Your</em> character's armature.</td>
+</tr>
+<tr>
+<td><strong>Rig Type</strong></td>
+<td>The naming convention of the target (UE5, Fortnite, Mixamo, Rigify, SMPL-X…). <strong>Auto-Detect</strong> usually gets it right.</td>
+</tr>
+<tr>
+<td><strong>Auto-Align Rest Pose</strong></td>
+<td>Swings the target's limbs onto the source's rest pose first, so an A-pose character does not look broken.</td>
+</tr>
+<tr>
+<td><strong>Auto Scale Motion</strong></td>
+<td>Scales how far the body travels to fit the target's height.</td>
+</tr>
+<tr>
+<td><strong>Match Floor Contact</strong></td>
+<td>Lifts or lowers the target each frame so its feet meet the floor.</td>
+</tr>
+<tr>
+<td><strong>Retarget</strong></td>
+<td>Runs the copy.</td>
+</tr>
+<tr>
+<td><strong>Share With Characters</strong></td>
+<td>Copies each take onto several characters at once (see below).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-send-to-cascadeur-hand-the-motion-over">6. Send to Cascadeur — hand the motion over</h3>
+<p>Always visible; it tells you what it needs rather than hiding until the right
+thing is selected.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Live: Mirror This Rig</strong></td>
+<td>Pose here or in Cascadeur and the other side follows, in real time. See <a href="#watching-it-in-cascadeur-live"><em>Watching it in Cascadeur, live</em></a>.</td>
+</tr>
+<tr>
+<td><strong>Send</strong></td>
+<td><strong>Character and Bones</strong> sends the rig itself — bones, meshes, animation — as a scene Cascadeur opens. <strong>Keyframes Only</strong> puts motion on a character Cascadeur already has.</td>
+</tr>
+<tr>
+<td><strong>Rig Type</strong></td>
+<td>Keyframes mode only. Which naming your rig uses, so its bones can be matched to Cascadeur's. Auto-detected; set it by hand if the guess is wrong.</td>
+</tr>
+<tr>
+<td><strong>With Mesh</strong></td>
+<td>Character mode only. Include the meshes bound to the rig.</td>
+</tr>
+<tr>
+<td><strong>Unify Skeleton</strong></td>
+<td>Character mode only. Sends one skeleton instead of the rig's internal parts, so hats, pouches and weapons arrive attached. Leave it on; your rig is not modified.</td>
+</tr>
+<tr>
+<td><strong>Fill Rig Mode</strong></td>
+<td>Fills Cascadeur's Quick Rigging Tool with this rig's joints, so Rig Mode does not have to guess them from their names.</td>
+</tr>
+<tr>
+<td><strong>Send Frame Range</strong></td>
+<td>Sends the scene's frame range in one go.</td>
+</tr>
+<tr>
+<td><strong>Current Frame</strong></td>
+<td>Sends just the pose you are looking at.</td>
+</tr>
+<tr>
+<td><strong>ⓘ</strong></td>
+<td>Asks Cascadeur how many frames it has received.</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="#sending-it-to-cascadeur"><em>Sending it to Cascadeur</em></a> for the order these
+have to be used in.</p>
+<hr />
+<h2 id="motionbricks">MotionBricks</h2>
+<p>The other way to move a character. <strong>Text to Motion</strong> takes a sentence;
+this takes a style and a direction, and it is quick enough that trying five
+of them costs nothing.</p>
+<p><strong>Make a walk</strong></p>
+<ol>
+<li>Open the <strong>MotionBricks</strong> panel.</li>
+<li>Pick a <strong>Style</strong> — start with <em>Walk</em>.</li>
+<li>Set <strong>Duration</strong> and press <strong>Generate Motion</strong>.</li>
+<li>Press play. If you like it, press <strong>Bake</strong>.</li>
+</ol>
+<p>A character appears if you did not have one — bones with a body over them —
+and it walks immediately —
+<strong>Generate Motion</strong> does not write keyframes, so trying ten walks costs
+almost nothing. <strong>Bake</strong> turns the one you kept into keyframes; <strong>Discard</strong>
+throws it away. Nothing else in Blender sees the motion until you bake it,
+so retargeting and exporting come after that.</p>
+<p><strong>Send it somewhere</strong></p>
+<ol>
+<li>Set <strong>Go</strong> to <em>To a Target</em> and press <strong>+</strong>.</li>
+<li>Move the marker where the character should end up.</li>
+<li>Turn the marker so its arrow points the way the character should face when
+   it gets there.</li>
+<li><strong>Generate Motion</strong>, then <strong>Bake</strong>.</li>
+</ol>
+<p>It walks over, slows down as it arrives, turns to face the arrow and stands
+still. Give it more seconds than it needs — waiting there costs nothing, and
+too few seconds stops it partway.</p>
+<p><strong>Keep going</strong></p>
+<p>Tick <strong>Continue</strong> and press <strong>Generate Motion</strong> again. It adds to whatever is
+there, baked or not, so you can build up a long performance a few seconds at a
+time and bake the whole thing once at the end. Change the style or the
+target first and the character changes what it is doing on the way, with no
+join to hide.</p>
+<p><strong>A crowd</strong></p>
+<p>Press <strong>+</strong> for each one and give each row its own <strong>Style</strong>. They all walk at
+once, live or generated: one walking, one idling, one crawling, each at its own
+speed.</p>
+<p>Untick a row and that character sits out — it keeps what it already has and is
+simply not part of the next <strong>Generate Motion</strong> or <strong>Start Live</strong>. Tick it back
+on whenever you want it moving again.</p>
+<p>While live, a character set to <strong>In a Direction</strong> follows the 3D cursor, and one
+set to <strong>To a Target</strong> walks to its own object instead — so you can send most of
+a crowd somewhere with one click while a few keep their own errands. A character
+whose style has no pace of its own, like <em>Idle</em>, stays where it is rather than
+being dragged along.</p>
+<p>Deleting a character from the scene drops its row too.</p>
+<p><strong>Steer it as it walks</strong></p>
+<p><strong>Generate Motion</strong> asks for a stretch of movement all at once. <strong>Start Live</strong>
+does it the other way: the character walks immediately and keeps walking while
+you steer it.</p>
+<ol>
+<li>Under <strong>Live</strong>, leave <strong>Steer With</strong> on <strong>3D Cursor</strong>.</li>
+<li>Press <strong>Start Live</strong>.</li>
+<li>Shift-right-click anywhere in the viewport. The character walks there,
+   facing the way it is going, and waits when it arrives. Click somewhere
+   else and it sets off again.</li>
+</ol>
+<p>Only where you clicked on the floor matters. Click a wall or a prop and
+   the cursor still sits on the ground, so you can always see the spot you
+   picked. It stays on whatever height the cursor was at when you pressed
+   <strong>Start Live</strong>, and goes back to behaving normally when you stop.
+4. <code>Esc</code> stops it. Press <strong>Bake</strong> to keep what it did.</p>
+<p>The cursor is the quickest way to direct it: nothing to select, nothing to
+drag, and it goes wherever you point. <strong>Target Object</strong> is the other way, and
+worth it when you care which way the character ends up looking — it faces the
+object's arrow instead of the way it walked in.</p>
+<p>It adds to the same held motion <strong>Generate Motion</strong> uses, so the two can be
+mixed in one take — walk a stretch live, then ask for ten more seconds to a
+target, then bake the lot at once.</p>
+<p><strong>Your own character, while it walks</strong></p>
+<p>Leave <strong>Move Characters Too</strong> on and the characters listed in <strong>Share With
+Characters</strong> walk along with it as you steer, rather than only after you bake.
+They are posed, not keyed, so there is nothing of theirs to undo — the walk is
+still written by <strong>Bake</strong> and <strong>Retarget</strong>.</p>
+<p>This is also the answer to the head. A MotionBricks skeleton has no neck or
+head, but your character does, and retargeting only touches the bones the two
+share — so the head stays where your rig puts it instead of being dragged
+around by a robot that has none.</p>
+<p><strong>Put it on your character</strong></p>
+<p>The <strong>Retarget</strong> panel below works exactly as it does for <em>Text to Motion</em> —
+the walk moves onto your own character, scaled to their size, feet on the
+floor. The head and neck stay where they are: MotionBricks moves the body and
+the arms, and has nothing to say about the head.</p>
+<h2 id="source-rig-vs-target-rig-plainly">Source rig vs. target rig, plainly</h2>
+<ul>
+<li><strong>Source rig</strong> = the armature MotionForge <em>makes</em> and animates. You never have
+  to rig it; the model already knows its skeleton.</li>
+<li><strong>Target rig</strong> = any other armature you want the motion on. It can be an
+  Unreal Engine mannequin, a Mixamo character, a Rigify rig, an SMPL-X body —
+  anything with reasonably named bones that matches one of the presets.</li>
+</ul>
+<p>The flow is always the same: <strong>generate on a source → retarget onto a target.</strong></p>
+<hr />
+<h2 id="a-beginners-recipe-end-to-end">A beginner's recipe, end to end</h2>
+<ol>
+<li><strong>Install and connect</strong> (see <em>Setup, once</em> above). Wait for <strong>Ready</strong>.</li>
+<li><strong>Create Rig</strong> — press it. An armature appears.</li>
+<li>Add a take with <code>+</code>, type what you want, press <strong>Generate Take</strong>.</li>
+<li>Scrub the timeline to watch it. The rig moves.</li>
+<li>To put it on your own character: open <strong>Retarget</strong>, pick your character as
+   <strong>Target</strong>, choose its <strong>Rig Type</strong>, press <strong>Retarget</strong>.</li>
+<li>To steer or pin specific moments, add <strong>waypoints</strong> or <strong>pose keys</strong> and
+   generate again.</li>
+</ol>
+<p>That is the whole loop. Everything else in this guide makes those six steps
+better — longer performances, live steering, and copying to many characters.</p>
+<hr />
+<h2 id="words-youll-see-glossary">Words you'll see (glossary)</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Action</strong></td>
+<td>Blender's name for an animation clip. Each take gets its own Action.</td>
+</tr>
+<tr>
+<td><strong>Take</strong></td>
+<td>One shot: its own prompt, its own length, its own Action.</td>
+</tr>
+<tr>
+<td><strong>Source rig</strong></td>
+<td>The MotionForge-built armature that holds the generated animation.</td>
+</tr>
+<tr>
+<td><strong>Target rig</strong></td>
+<td>Your character's armature that receives the motion.</td>
+</tr>
+<tr>
+<td><strong>Retarget</strong></td>
+<td>Copying animation from the source rig onto the target rig.</td>
+</tr>
+<tr>
+<td><strong>Waypoint</strong></td>
+<td>"Be at this spot on this frame."</td>
+</tr>
+<tr>
+<td><strong>Pose key</strong></td>
+<td>"Look like this on this frame."</td>
+</tr>
+<tr>
+<td><strong>Shared encoder</strong></td>
+<td>A text-processing model loaded once and shared, so connecting is fast.</td>
+</tr>
+<tr>
+<td><strong>Foot skating</strong></td>
+<td>A foot sliding along the ground when it should stay planted.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="your-first-animation">Your first animation</h2>
+<p><strong>Connect ARDY.</strong> The first time, this downloads several GB. Wait for <em>Ready</em>.</p>
+<p><strong>Create Rig.</strong> An armature appears — this is the skeleton the model animates.</p>
+<p><strong>Press <code>+</code>, write what should happen, press Generate Take.</strong></p>
+<div class="highlight"><pre><span></span><code>a person walks forward
+a person sits down on a chair
+a person waves with the right hand
+a person jumps over something
+</code></pre></div>
+<p>Plain sentences work best. "a person" is how the model was taught, so start
+there. A few seconds later the rig is animated and you can scrub the timeline.</p>
+<hr />
+<h2 id="takes">Takes</h2>
+<p>A take is one shot: its own prompt, its own length, its own Action.</p>
+<div class="highlight"><pre><span></span><code>☑ a person walks forward       100f ▶
+☑ a person sits down            60f ▶
+☐ a person waves                 ○
+</code></pre></div>
+<ul>
+<li><code>+</code> and <code>−</code> add and remove takes</li>
+<li>the checkbox decides whether <strong>Generate All</strong> includes it</li>
+<li><code>▶</code> puts that take's animation back on the rig</li>
+<li><code>○</code> means it has not been generated yet</li>
+</ul>
+<p><strong>Generate Take</strong> does the selected one. <strong>Generate All</strong> does every ticked one.</p>
+<h3 id="chaining-takes">Chaining takes</h3>
+<p>Tick the 🔗 on a take and it starts exactly where the take above ended — same
+spot, same facing, same pose. Chain several and <strong>Generate All</strong> gives you one
+continuous performance built out of separate instructions.</p>
+<p>Take 1 has nothing before it, so it cannot be chained.</p>
+<hr />
+<h2 id="steering-it">Steering it</h2>
+<h3 id="waypoints-go-through-here-at-this-time">Waypoints — go through here at this time</h3>
+<p>Move the 3D cursor, press <code>+</code>, set the frame. The character will be at that
+spot on that frame. Add more for a route.</p>
+<p>Turn on <strong>Face Waypoint Direction</strong> and the empty's green arrow also decides
+which way the character looks when it gets there.</p>
+<h3 id="pose-keys-look-like-this-on-this-frame">Pose keys — look like this on this frame</h3>
+<p>Go to the frame you want, press <code>+</code>, then pose.</p>
+<p>Each key gets <strong>its own rig</strong> — a copy of the generated one named <code>cskel27_001</code>,
+<code>cskel27_002</code>, and so on — and <code>+</code> drops you straight into pose mode on it.
+Pose that copy, not the animated rig. It carries no animation of its own, so
+what you pose stays put no matter how much you scrub.</p>
+<p>Add as many as you like: frame 30, frame 60, frame 100. Press <strong>Generate</strong> and
+the take is made to pass through all of them in order — A to B to C.</p>
+<ul>
+<li><strong>Whole Body</strong> holds every joint. That frame comes out looking like what you
+  posed.</li>
+<li><strong>Parts</strong> holds only the hands and feet you tick, and lets the model invent
+  the rest of the body around them.</li>
+</ul>
+<p>Mix them freely: pin the first frame exactly, and only a hand later on.</p>
+<p><strong>IK On</strong> puts hand and foot handles on the selected key's rig so you can pose
+it by dragging instead of rotating 27 bones:</p>
+<ul>
+<li>Blue cubes on the hands and feet — drag one and the limb follows.</li>
+<li>Yellow pyramids at the elbows and knees — these are pole targets. Move one to
+  say which way the joint bends.</li>
+<li><strong>IK Off</strong> bakes what IK is showing onto the bones and removes the handles.
+  The pose stays exactly as it looked.</li>
+</ul>
+<p>Turning IK on never moves the pose: the handles are built where the limbs
+already stand, and each pole angle is measured from the bend the pose already
+has. If a limb jumps when IK comes on, that is a bug, not you.</p>
+<p>The poses are read when you press Generate, not when you press <code>+</code>. So adjust
+a pose and Generate again — no need to re-add the key. <strong>Pose \&lt;name&gt;</strong> in the
+panel jumps back to a key's frame and selects its rig for editing; removing a
+key deletes its rig with it.</p>
+<p>Moving a pose rig moves where the character will be on that frame, since the
+root position is part of the pose. Leave it where it is unless you mean that.</p>
+<blockquote>
+<p><strong>Keep "Reduce Foot Skating" on.</strong> It is also the step that lands the motion
+exactly on your waypoints and pose keys. With it off they become suggestions.</p>
+</blockquote>
+<hr />
+<h2 id="live-path-steer-while-it-plays">Live Path — steer while it plays</h2>
+<p>This is the fun one.</p>
+<ol>
+<li>Open <strong>Live Path</strong> and press <strong>+</strong>. A row appears — give it a prompt and
+   pick the rig it drives.</li>
+<li>Press <strong>+</strong> beside <strong>Target</strong>. A cone appears — its point is the direction
+   the character will face.</li>
+<li>Press <strong>Start Live</strong>. The character begins moving.</li>
+<li><strong>Drag the cone.</strong> The character walks toward it.</li>
+</ol>
+<p>Press <code>Esc</code> or <strong>Stop</strong> to end it. Nothing is keyed until you <strong>Bake</strong>.</p>
+<p><strong>Animate the cone instead of dragging it.</strong> Keyframe it, parent it to a
+curve, drive it however you like — MotionForge just reads where it is each
+time it needs more motion. That gives you a repeatable path you can re-run with
+different prompts or seeds, and exact control over timing.</p>
+<p>Tick <strong>Face Target Direction</strong> and the cone's rotation steers facing too, so
+the character can walk backwards, sidestep, or circle something while watching
+it.</p>
+<p><strong>Several characters at once.</strong> Add a row per character and press <strong>Start
+Live</strong> once. Each walks to its own cone, on its own prompt. They can stand
+anywhere and face any direction — a target is read from where that rig stands,
+not in world coordinates.</p>
+<p><strong>Stop After</strong> ends the run on its own after a set number of seconds. Leave it
+at <code>0</code> and it runs until you stop it; there is no hidden limit, and the room
+ahead grows as the take does.</p>
+<p><strong>What to expect</strong></p>
+<ul>
+<li>Steering shows up about 2 seconds later. What you are watching was already
+  decided. The <strong>Core, short horizon</strong> model reacts in 0.4 s instead, at some
+  cost in quality.</li>
+<li>Keep the cone roughly a walk ahead of the character. Put it too far and the
+  character breaks into a run; jerk it around and the footwork gets messy.</li>
+<li>Live skips the foot-skating pass. If a live path is exactly what you wanted,
+  rebuild it with waypoints for the cleaner result.</li>
+</ul>
+<p><strong>If it cannot keep up</strong>, the panel says where the time goes:</p>
+<div class="highlight"><pre><span></span><code>12.4s generated, 1.8s ahead
+gen 130 + hold 0 of 2000 ms
+</code></pre></div>
+<p>The last number is how long one window plays for. As long as the first two add
+up to less than it, the loop is keeping ahead.</p>
+<ul>
+<li><strong>gen</strong> is generation. On an RTX 5080 one character costs about 130 ms and
+  four cost about 490 ms, because the characters are generated one after
+  another. If <strong>gen</strong> is in the thousands, the text encoder is sitting on your
+  graphics card — see <em>Why the text encoder runs on the CPU</em> below.</li>
+<li><strong>hold</strong> is what it costs to keep the window in memory, which is nothing.</li>
+</ul>
+<p>MotionForge generates further ahead when a cycle takes longer, so adding
+characters does not make it stutter. It only asks for more room when it needs
+it, because running further ahead makes dragging the cone slower to show up.</p>
+<h3 id="bake">Bake</h3>
+<p>Live never writes keys as it runs. Keying redraws the viewport for every frame
+of every window - 658 ms of a 2000 ms budget in a real editor - so the take is
+held in memory instead and the loop stays clear.</p>
+<p>When you stop, the panel says how many seconds are waiting and a <strong>Bake</strong>
+button writes the whole take in one go. It is there whenever something is
+waiting, so you can generate as long as you like and decide afterwards; the
+rig does not move until you press it. <strong>Discard</strong> throws the take away.</p>
+<hr />
+<h2 id="roadmap-smpl-x-bodies">Roadmap: SMPL-X bodies</h2>
+<p>MotionForge makes motion but has no body. <a href="https://smpl-x.is.tue.mpg.de/">SMPL-X</a> is the opposite — a
+parametric human body (10 shape numbers, 55 joints) with the deformation
+research behind it. Meshcapade's <a href="https://github.com/Meshcapade/SMPL_blender_addon">Blender add-on</a> builds one in Blender,
+and Perceiving Systems' <a href="https://github.com/PerceivingSystems/smpl-unreal">Unreal plugin</a> computes its pose-corrective blend
+shapes <em>at runtime</em> instead of baking them per frame. That last part is what
+makes it a fit: it means generated and streamed motion works as well as
+recorded motion, with no bake step.</p>
+<p>Four steps, in the order they are being built:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Retarget onto SMPL-X / SMPL-H</strong> — pick the body in the Retarget panel like any other rig</td>
+<td><strong>done</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Export <code>.smpl</code> / <code>.npz</code></strong> — the pose parameters themselves, for AMASS, BEDLAM and Meshcapade tooling</td>
+<td><strong>done</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Live Link to Unreal</strong> — stream a take into UE while it generates, correctives computed live</td>
+<td><strong>stream verified in UE</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Shape-aware retargeting</strong> — the motion is corrected for the body's build</td>
+<td><strong>done</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The order is deliberate. Step 1 reuses the retarget engine that already works
+on UE5, Fortnite, Mixamo and Rigify, so it is the least new machinery for the
+most result, and it is the thing the other three stand on. Step 2 is a small
+writer once step 1 defines the joint mapping. Step 3 is the one worth having —
+steering a photoreal character in Unreal from a text prompt, with nothing
+baked — but it needs 1 and 2 first.</p>
+<h3 id="step-3-the-motion-stream">Step 3: the motion stream</h3>
+<p>Turn on <strong>Stream to Unreal</strong> in Live Path and each window is pushed over TCP
+as it is generated, to anything listening on the port. One JSON object per
+line, so a receiver is a socket and <code>json.loads</code>:</p>
+<div class="highlight"><pre><span></span><code>{"type":"hello","protocol":1,"skeleton":"cskel27",
+ "joints":["Hips",...],"parents":[null,0,...],
+ "rest":[[x,y,z],...],"fps":20.0,"up":"y"}
+
+{"type":"frame","index":0,"time":0.0,
+ "translation":[x,y,z],"pose":[[rx,ry,rz],...]}
+</code></pre></div>
+<p><code>pose</code> is one axis-angle rotation per joint relative to the rest pose, in the
+order <code>joints</code> gives — enough to run forward kinematics. Y is up. A late
+joiner gets the hello and then whatever comes next; a listener that leaves is
+dropped without disturbing the generation.</p>
+<p>Verified end to end: 120 frames of a live take, in order, and running the
+kinematics from the stream puts every joint within 2 µm of where the rig is
+standing in Blender.</p>
+<h3 id="the-unreal-plugin">The Unreal plugin</h3>
+<p><code>MotionForgeLiveLink</code> lives in the MetaHuman_FAB58 project's <code>Plugins</code> folder.
+It adds <strong>MotionForge</strong> to Live Link's <em>Add Source</em> list: give it
+<code>127.0.0.1:9560</code>, and the take appears as an animation subject while Blender
+is still generating it.</p>
+<p>It converts on the way in — metres to centimetres, Y-up right-handed to Z-up
+left-handed — and publishes bones parent-relative, which is what Live Link
+expects. It reconnects on its own, so the order you start Blender and Unreal in
+does not matter.</p>
+<p>From there: a <strong>Live Link Pose</strong> node in an Anim Blueprint, then the SMPL
+plugin's <strong>SMPL Pose Correctives</strong> node after it. The correctives are computed
+from whatever pose arrives, so a generated take deforms the body exactly as a
+recorded one would.</p>
+<p>The stream carries ARDY's own joint names (<code>Hips</code>, <code>Spine</code>, <code>LeftUpLeg</code>…), not
+SMPL-X's. Use a Live Link Remap Asset if your target skeleton names differ.</p>
+<p><strong>Verified in Unreal</strong>, on UE 5.8:</p>
+<div class="highlight"><pre><span></span><code>LogMotionForge: Subject published: skeleton 'cskel27', 27 joints, 20.0 fps.
+LogMotionForge: First frame pushed to Live Link.
+</code></pre></div>
+<p>A subject reading <em>Subject Invalid</em> before the first frame is normal - the
+skeleton arrives first and the subject only becomes valid once frames follow.
+It goes back to invalid when a take ends, for the same reason.</p>
+<h4 id="the-skeleton-to-receive-on">The skeleton to receive on</h4>
+<p>Live Link does not create anything in Unreal - it drives a Skeletal Mesh that
+is already there. So you need a skeleton, and its bones have to match what the
+stream sends.</p>
+<p><strong>Export Rig for Unreal (FBX)</strong>, next to the stream settings, writes one built
+for the job. Import it in Unreal and it lines up with no remapping at all.</p>
+<p>It is not the rig you see in Blender. Live Link writes each streamed transform
+straight into a bone's local slot, so the receiving skeleton has to share
+ARDY's convention: every joint's rest orientation is the identity. The Blender
+rig aims each bone at its child to be readable, which is up to 128 degrees away
+from that - every rotation would land twisted by the difference. The exported
+one has every bone pointing the same way. It looks like a bundle of sticks, and
+that is the point: it is a driver.</p>
+<p>From there, Unreal's <strong>IK Retargeter</strong> moves the motion onto the character you
+actually want - a MetaHuman, an SMPL-X body - which is the same route BEDLAM
+uses.</p>
+<h4 id="wiring-it-up">Wiring it up</h4>
+<ol>
+<li>Import the FBX. Unreal makes a Skeletal Mesh and a Skeleton.</li>
+<li>Right-click the Skeleton, Create Animation Blueprint.</li>
+<li>In the AnimGraph: <strong>Live Link Pose</strong> (Subject: <code>MotionForge</code>) into
+   <strong>Output Pose</strong>. Add the SMPL plugin's <strong>SMPL Pose Correctives</strong> node
+   between them when you are driving an SMPL body.</li>
+<li>Drop the mesh in the level and set its Anim Class to that Blueprint.</li>
+</ol>
+<p><strong>Nothing has watched a character move yet.</strong> The stream reaches Live Link and
+the skeleton is built to match it, but how the motion looks in Unreal is not
+confirmed.</p>
+<h3 id="step-4-standing-on-the-same-floor">Step 4: standing on the same floor</h3>
+<p>ARDY generates on one fixed skeleton. Retargeting already scaled the stride to
+the target's legs, but nothing put its feet on the ground, so a body built
+taller or shorter hovered above the floor or sank into it.</p>
+<p><strong>Match Floor Contact</strong> in the Retarget panel fixes that. Each frame, the
+target is raised or lowered so its lowest joint sits where the source's does,
+scaled to its own build. A planted foot lands on the floor; a jump is still a
+jump.</p>
+<p>Measured on bodies built at 0.7x and 1.4x: a planted foot went from 45 mm off
+the floor to 0.0 mm, with nothing sinking through, and the take kept both its
+travel and its rise and fall.</p>
+<p>True shape-<em>conditioned generation</em> — the body's build changing how the model
+moves in the first place — would need ARDY retrained with shape as an input,
+which is not something this add-on can do. What is achievable, and what this
+is, is making the motion correct <strong>for</strong> the body it lands on.</p>
+<p><strong>What you need.</strong> SMPL-X model files are licensed separately: free for
+academic use from the <a href="https://smpl-x.is.tue.mpg.de/">project page</a>, commercial through
+<a href="https://meshcapade.com/">Meshcapade</a>. They cannot ship with this add-on.</p>
+<p><strong>What will not work yet.</strong> SMPL-X wants 30 finger joints. The released ARDY
+model has one thumb joint per hand, so hands stay in their neutral pose. The
+77-joint SOMA skeleton has full fingers, but NVIDIA has not published it.</p>
+<hr />
+<h2 id="one-take-several-characters">One take, several characters</h2>
+<p>Set the characters up <strong>before</strong> you generate, and every take lands on all of
+them at once.</p>
+<p>In the retarget panel, under <strong>Share With Characters</strong>: select a character,
+press <code>+</code>, pick its rig type if Auto guesses wrong. Add two or three. From then
+on, Generate — and Bake, after a live take — copies the motion onto every one.</p>
+<ul>
+<li><strong>Fill Characters After Generating</strong> — untick to stop it happening
+  automatically.</li>
+<li><strong>Fill Characters</strong> — do it now, for a take that is already made.</li>
+<li>The tick box beside each character skips it without removing it.</li>
+</ul>
+<p><strong>Why not during a live take?</strong> Because it does not fit. A retarget costs about
+55 ms a frame per character, measured: one character needs 2197 ms for a
+40-frame window, two 4598 ms, three 6787 ms — and a live window has 2000 ms to
+be ready in. So the copy happens once a take exists, which is also when it can
+be done in one pass instead of forty.</p>
+<hr />
+<h2 id="moving-it-onto-your-own-character">Moving it onto your own character</h2>
+<p>Open <strong>Retarget</strong>, pick your armature under Target, choose its family
+(UE5, Fortnite, MetaHuman, Mixamo, Rigify, TF2 Trifecta, SMPL-X…) and press
+Retarget. <strong>Auto-Detect</strong> usually gets it right on its own.</p>
+<p>Verified on Unreal Engine 5 mannequins, Fortnite exports, Mixamo rigs, Rigify
+and SMPL-X bodies, and on the Scout, Soldier, Heavy, Medic, Sniper and Spy in
+both their Legacy and New Trifecta rigs — including rigs built at centimetre
+scale.</p>
+<p><strong>SMPL-X / SMPL-H.</strong> Build a body with Meshcapade's Blender add-on, pick it as
+the Target, and generate. Fingers stay in their neutral pose — the released
+ARDY model has one thumb joint per hand and nothing else.</p>
+<p>Once the motion is on an SMPL body, <strong>Export SMPL (.smpl)</strong> appears under the
+Retarget button. That file is the pose parameters themselves rather than a
+baked skeleton, so it opens in AMASS, BEDLAM and Meshcapade's tools, and it is
+what Perceiving Systems' Unreal plugin wants. Body shape is read from the
+body's own shape keys if the Meshcapade add-on left them there.</p>
+<hr />
+<h2 id="watching-it-in-cascadeur-live">Watching it in Cascadeur, live</h2>
+<p>The Send buttons hand over a finished take. <strong>Live: Mirror This Rig</strong>, on the
+Send to Cascadeur panel, is earlier than that: pose the rig in Blender and
+the character in Cascadeur moves with it, in real time, while you work.
+Nothing is installed for it - no plug-in, no Administrator.</p>
+<p><strong>In Cascadeur, run Receive Poses (Blender) first</strong> - commands menu. That is
+what the whole panel needs, Live included; nothing here works before it is
+running. <strong>Then send the character across once, and press Live.</strong> Live
+reuses the same bone mapping and reference pose Send does, so a character
+that has not been sent yet has nothing for Live to drive.</p>
+<p><strong>Which way it mirrors</strong> is a dropdown next to the button:</p>
+<ul>
+<li><strong>Follow the Focus</strong> - pose in whichever window you are working in, and
+  the other one follows. Click over to Cascadeur and it takes over from
+  there.</li>
+<li><strong>Blender to Cascadeur</strong> - only what you do here is sent.</li>
+<li><strong>Cascadeur to Blender</strong> - only what you do there comes back.</li>
+</ul>
+<p><strong>How much of the rig moves</strong> is the dropdown beside it: the mapped bones
+Send always uses, or the whole skeleton (only when the character in
+Cascadeur is the one this rig sent).</p>
+<p>Playing an animation in Blender plays it in Cascadeur too, keyed there as it
+goes. <strong>Stop Mirroring</strong> ends the session; whatever already arrived in
+Cascadeur stays.</p>
+<h2 id="sending-it-to-cascadeur">Sending it to Cascadeur</h2>
+<p>Motion made here can go straight onto a character in Cascadeur. No FBX to
+export by hand, no import dialog.</p>
+<p><strong>Turn Cascadeur's side on first.</strong> In Cascadeur: <code>Animation Scripts</code> →
+<strong>Receive Poses (Blender)</strong>. It starts listening on <code>127.0.0.1:9564</code>; running
+it again stops it. This needs the Cascadeur plug-in installed.</p>
+<h3 id="the-order-matters">The order matters</h3>
+<ol>
+<li><strong>Send Character</strong> — sends this rig, its meshes and its animation. Cascadeur
+   opens it in a tab of its own.</li>
+<li><strong>Send Frame Range</strong> (Keyframes Only) — sends new motion onto the character
+   that is now there.</li>
+</ol>
+<p>Do it the other way round and the keyframes have nothing to land on.</p>
+<p><strong>Send Character again after restarting Cascadeur.</strong> When the character
+arrives, Cascadeur records the orientation every joint came in at, and the
+keyframes are measured against that record. Restarting Cascadeur loses it, and
+keyframes sent afterwards will be turned the wrong way — quietly, with nothing
+reporting an error.</p>
+<h3 id="sending-onto-cascadeurs-own-character">Sending onto Cascadeur's own character</h3>
+<p>You do not have to send a character first. If Cascadeur already has one of its
+own open, switch to <strong>Keyframes Only</strong> and send: bones are matched by role, so
+a UE5, Mixamo, Rigify or SMPL-X rig is translated into Cascadeur's own joint
+names on the way across — <code>pelvis</code> lands on <code>Hips</code>, <code>upperarm_l</code> on <code>LeftArm</code>.</p>
+<h3 id="what-actually-crosses">What actually crosses</h3>
+<p><strong>A turn, not an orientation.</strong> Each bone's rotation goes over measured from
+its own rest pose, and Cascadeur folds its character's rest back in. Sending
+the world orientation instead only works when both skeletons happen to rest the
+same way, which they never do — Blender lays a bone's Y down its length, and
+Cascadeur's joints rest however the character was built.</p>
+<p><strong>Joint positions only when it is the same skeleton.</strong> Onto a different
+character only the root's position is sent and the rotations carry the pose,
+so Cascadeur keeps its own bone lengths. Sending every joint's position drags
+that character's bones to <em>this</em> rig's proportions, and the mesh — still bound
+to the bones it was skinned to — breaks at the elbows and knees.</p>
+<p>Measured, onto a character sent from here: joint positions match to
+<strong>0.0000 cm</strong> and rotations to <strong>0.000003</strong>. Onto a different character the
+pose is fitted rather than copied, and the character keeps its own proportions.</p>
+<h3 id="speed">Speed</h3>
+<p>A range crosses in one write. Forty frames of twenty-seven joints land in
+0.09 s, so there is nothing to gain from sending frame by frame — a write
+costs about the same whether it carries one pose or a thousand.</p>
+<h3 id="rigs-built-out-of-several-skeletons">Rigs built out of several skeletons</h3>
+<p>Some rigs are not one skeleton. A Rigify-built character — the Team Fortress 2
+Trifecta rigs are the ones you are most likely to meet — keeps the bones that
+move the mesh apart from the bones the hat, the pouch and the weapon hang off.
+Sent as they are, the character arrives in Cascadeur in pieces: the body moves
+and the props stay where they were.</p>
+<p><strong>Unify Skeleton</strong> merges them into one before the character crosses. Leave it
+on. Your rig is not touched — the copy is made, sent and thrown away.</p>
+<ul>
+<li>The hat stays on the head, the pouch on the belt, the weapon in the hand.</li>
+<li>Fingers, toes and twist bones follow the limb they belong to.</li>
+<li>Both Trifecta rigs are recognised on sight, and so are their fingers.</li>
+</ul>
+<h3 id="filling-cascadeurs-rig-mode">Filling Cascadeur's Rig Mode</h3>
+<p>Cascadeur's Quick Rigging Tool guesses which joint is which from their names,
+and a character whose bones are not named the way it expects gets almost
+nothing — a TF2 mercenary filled three fields out of twenty-one.</p>
+<p><strong>Fill Rig Mode</strong> hands it the answer instead. It runs on its own with
+Send Character, and there is a button to do it again later.</p>
+<p>Open the Quick Rigging Tool afterwards and look the joints over before you
+build the rig. Cascadeur keeps the fields it has and quietly drops the rest;
+anything it drops still follows the joint above it.</p>
+<hr />
+<h2 id="bringing-it-back">Bringing it back</h2>
+<p><strong>Receive from Cascadeur</strong> brings the work home. Pick the armature to receive
+onto first.</p>
+<p><strong>Animation Only</strong> keys onto the rig you already have. <strong>Mesh + Animation</strong>
+brings the character back as new objects.</p>
+<p>On a rig that needed <strong>Unify Skeleton</strong> to get there, the animation lands on
+the controls you normally animate with, not on the deform bones.</p>
+<h3 id="timing">Timing</h3>
+<p>Cascadeur runs on its own frame rate, which is usually not the one this scene
+is set to. The same motion can come back as a different number of frames.</p>
+<table>
+<thead>
+<tr>
+<th>Timing</th>
+<th>What you get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Match Timing</strong></td>
+<td>It comes back at the speed it left, whatever Cascadeur is set to.</td>
+</tr>
+<tr>
+<td><strong>Fit Scene Range</strong></td>
+<td>Spread across this scene's frame range. Ten frames into two hundred and fifty is slow motion, and that is the point.</td>
+</tr>
+<tr>
+<td><strong>One For One</strong></td>
+<td>One Cascadeur frame becomes one Blender frame, untouched.</td>
+</tr>
+</tbody>
+</table>
+<p>Match Timing needs a Send Character from here to compare against; without one
+the take lands at Cascadeur's own frame count and says so.</p>
+<p>Setting both programs to the same frame rate is exact. Anything else is
+interpolated, which is close but not the same thing.</p>
+<hr />
+<h2 id="settings-worth-knowing">Settings worth knowing</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Seed</strong></td>
+<td><code>-1</code> gives something new each time. Fix it to get the same motion back.</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>How long this take runs.</td>
+</tr>
+<tr>
+<td><strong>Reduce Foot Skating</strong></td>
+<td>Cleans up sliding feet <strong>and</strong> enforces waypoints and pose keys. Leave it on.</td>
+</tr>
+<tr>
+<td><strong>Denoising Steps</strong></td>
+<td><code>0</code> uses the model's default. Fewer is faster and rougher.</td>
+</tr>
+<tr>
+<td><strong>Prompt Strength</strong></td>
+<td>How hard it tries to obey your words.</td>
+</tr>
+<tr>
+<td><strong>Constraint Strength</strong></td>
+<td>How hard it tries to hit your waypoints and poses.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="models">Models</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core (27 joints)</strong></td>
+<td>Everything. This is the default.</td>
+</tr>
+<tr>
+<td><strong>Core, short horizon</strong></td>
+<td>Live steering when you want faster reactions.</td>
+</tr>
+<tr>
+<td><strong>Unitree G1</strong></td>
+<td>The humanoid robot. Adds a MuJoCo <code>qpos</code> CSV export.</td>
+</tr>
+<tr>
+<td><strong>SOMA</strong></td>
+<td>Not released by NVIDIA yet. Connecting with it fails.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-the-model-weights-live">Where the model weights live</h3>
+<p>About 19 GB in total — 15 GB of it the text encoder, the rest the motion
+models. They are downloaded the first time you connect and kept forever after.</p>
+<p><strong>Checkpoints</strong> in the add-on preferences decides where. Set it and everything
+is downloaded and read there. Leave it empty and Hugging Face keeps them in
+your user profile, under <code>C:\Users\&lt;you&gt;\.cache\huggingface</code>.</p>
+<p>Worth setting if your C: drive is tight, or if you want the weights beside the
+project rather than hidden in a profile folder. Changing it later does not
+move what has already been downloaded — copy the <code>models--*</code> folders across
+yourself, or the next connect fetches 19 GB again.</p>
+<h3 id="the-shared-text-encoder">The shared text encoder</h3>
+<p>Reading your prompt needs a 14 GB language model. It is loaded once and kept in
+a process of its own, so connecting takes about 5 seconds — including when you
+switch models or reconnect. <strong>Connect</strong> starts it for you the first time.
+Leave it running while you work; <strong>Stop</strong> in the same box frees the memory.</p>
+<p>It serves Blender only. The browser demo speaks a different protocol and always
+loads its own copy.</p>
+<h4 id="why-the-text-encoder-runs-on-the-cpu">Why the text encoder runs on the CPU</h4>
+<p>Two models are involved, and they want very different things.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What it does</th>
+<th>How often</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Text encoder</strong>, 14 GB</td>
+<td>Turns your prompt into numbers</td>
+<td>Once, when a take starts</td>
+</tr>
+<tr>
+<td><strong>Motion model</strong>, ~1 GB</td>
+<td>Generates the actual movement</td>
+<td>Every window, all run long</td>
+</tr>
+</tbody>
+</table>
+<p>The motion model has to be on the graphics card — that is what makes a window
+take 130 ms instead of seconds. The text encoder does not: it runs once per
+take, and a second on the CPU costs you nothing you can feel.</p>
+<p>On a 16 GB card they do not both fit. Putting the 14 GB encoder there leaves
+the motion model without room, and it starts spilling — shuffling data on and
+off the card to keep working. Nothing fails, everything just crawls. Measured
+on an RTX 5080:</p>
+<table>
+<thead>
+<tr>
+<th>One window</th>
+<th>Encoder on the card</th>
+<th>Encoder on the CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One character</td>
+<td>2059 ms</td>
+<td><strong>131 ms</strong></td>
+</tr>
+<tr>
+<td>One character, following a target</td>
+<td>8084 ms</td>
+<td><strong>140 ms</strong></td>
+</tr>
+<tr>
+<td>Four characters</td>
+<td>36829 ms</td>
+<td><strong>490 ms</strong></td>
+</tr>
+</tbody>
+</table>
+<p>A window plays for 2000 ms, so the left column cannot keep up with playback at
+all. That is the difference between live steering working and not.</p>
+<p><strong>Text Encoder On</strong> lets you choose:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Auto</strong></td>
+<td>Measures your card. Under 20 GB, the encoder goes on the CPU. This is the default and it is right for almost everyone.</td>
+</tr>
+<tr>
+<td><strong>CPU</strong></td>
+<td>Always on the CPU.</td>
+</tr>
+<tr>
+<td><strong>GPU</strong></td>
+<td>Always on the card. Sensible on 24 GB and up, where both fit. Slightly faster prompt reading — 0.8 s instead of 1.6 s, once per take.</td>
+</tr>
+</tbody>
+</table>
+<p>On the CPU the encoder never touches your graphics card at all, not even while
+loading, so you can have Unreal or a second Blender open while it starts.</p>
+<hr />
+<h2 id="in-a-browser-instead">In a browser instead</h2>
+<p><code>start_web.bat</code> opens NVIDIA's own interactive demo at
+<code>http://localhost:2333</code>. It is a different way to work — a timeline of prompts
+you scrub through, with no Blender involved.</p>
+<p>Run one at a time. The demo loads its own copy of the 14 GB text encoder, which
+on a 16 GB card leaves nothing for anything else. Disconnect in Blender, and
+stop the shared encoder, before starting it — otherwise the demo runs out of
+memory while loading and closes.</p>
+<p><code>start_web.bat</code> launches it with four things fixed. None of them edit <code>ardy/</code>,
+so updates to NVIDIA's code still apply cleanly.</p>
+<p><strong>The timeline bar can be moved.</strong> Two things were in the way. The demo
+re-ranged the bar to a 20-frame trailing window on <em>every</em> frame change —
+twenty times a second — which snapped the view back to the playhead and undid
+any scrolling as fast as you did it. And the left mouse button is spoken for:
+on the header it scrubs the playhead, on a track it makes keyframes, so
+click-dragging the view just moved the frame instead.</p>
+<table>
+<thead>
+<tr>
+<th>Gesture</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Middle-button drag</strong></td>
+<td>Move along the take</td>
+</tr>
+<tr>
+<td>Wheel</td>
+<td>Move along the take</td>
+</tr>
+<tr>
+<td>Shift + wheel</td>
+<td>Zoom</td>
+</tr>
+<tr>
+<td>Left drag on the header</td>
+<td>Scrub the playhead</td>
+</tr>
+</tbody>
+</table>
+<p>Middle-button drag is added by patching viser's own web client, which lives in
+the virtual environment rather than in anything we ship. <code>install.bat</code> applies
+it and rebuilds. To undo it:</p>
+<div class="highlight"><pre><span></span><code>.venv<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe<span class="w"> </span>motionforge<span class="se">\p</span>atch_timeline.py<span class="w"> </span>--revert
+</code></pre></div>
+<p><strong>Text tab</strong> — the whole take is built here, beside the prompt it is made
+from. Making motion and watching it are separate, as they are in Blender.</p>
+<ul>
+<li><strong>Prompt</strong> and <strong>Ends at Frame</strong> — what the character does, and the frame it
+  runs to. The next prompt starts on the frame after.</li>
+<li><strong>Add to Take</strong> — queue it. Add as many as you like; they are generated one
+  after another, the way takes chain in Blender. The list shows the frame
+  range each one covers.</li>
+<li><strong>Generate</strong> — make the queued prompts in order, then stop. Nothing plays;
+  the playhead returns to the first frame when it is done. With an empty list
+  it just uses the Prompt box.</li>
+<li><strong>Examples</strong> — the stock demo's preset prompts, which it called "Prompt
+  List" even though pressing one replaced the prompt and regenerated on the
+  spot. Here they only fill the Prompt box.</li>
+<li><strong>Use This Prompt From Here</strong> — change the prompt at the playhead without
+  queueing anything, for steering a take by hand.</li>
+</ul>
+<p>Boundaries land on the frame you asked for. Queue <em>walks</em> to 30, <em>runs</em> to 100
+and <em>stops</em> to 200 and the take is 201 frames, changing on 31 and 101 — not on
+whatever multiple of the generation window came nearest.</p>
+<p>Generate only makes what is missing: add a fourth prompt and the first three
+are left alone, edit the second and everything from it onward is rebuilt.
+- <strong>New Motion</strong> — empty the take and go back to frame 0. It generates
+  nothing: the point is to start over, so add your prompts and press Generate.
+- <strong>Clear Take List</strong> — empty the queue, leaving the take alone.</p>
+<p><strong>Playback tab</strong> only plays:</p>
+<ul>
+<li><strong>Play</strong> — replay what has been generated. It does not generate anything.</li>
+<li><strong>Loop Playback</strong> — start again at the first frame instead of stopping.</li>
+<li><strong>Keep Generating While Playing</strong> — off. The stock demo has this on with no
+  way to turn it off, which is why Play there generates forever and you can
+  never simply watch what you have. Tick it if you want that back.</li>
+</ul>
+<p>So the usual round is: <strong>New Motion</strong>, add two or three prompts, <strong>Generate</strong>,
+<strong>Play</strong> to look at it, <strong>Export BVH</strong> to keep it.</p>
+<p>Under Frame Index:</p>
+<ul>
+<li><strong>First Frame</strong> / <strong>Last Frame</strong></li>
+<li><strong>Start Frame</strong>, <strong>End Frame</strong>, <strong>Apply Range</strong> — set exactly what the bar
+  shows</li>
+<li><strong>Visible Frames</strong> — zoom. Smaller is zoomed in</li>
+<li><strong>Fit Whole Take</strong> — put everything back on the bar</li>
+</ul>
+<p>The Frame Index box also accepts any frame; the stock one stops at 199 however
+long the take is.</p>
+<p><strong>Files tab</strong>:</p>
+<ul>
+<li><strong>Choose Mesh</strong> — a real file picker, reading from <em>your</em> computer. The IO
+  tab's "Load 3D Mesh" only takes a path on the machine running the server.
+  Set <strong>Scale</strong> first, or change it and press <strong>Apply Scale / Transform</strong> to
+  reload the same file without picking it again. A room modelled in
+  centimetres needs 0.01 to sit right beside a character in metres.</li>
+<li><strong>Export BVH</strong> — the skeleton and its animation, in a file Blender, Maya,
+  MotionBuilder and Unreal all import. Scale 1.0 writes metres; 100 for tools
+  that expect centimetres, 0.01 for a rig that arrives far too big.</li>
+</ul>
+<p>There is no FBX export. FBX needs Autodesk's SDK, which is not part of this
+install and cannot be redistributed with it. Import the BVH into Blender and
+export FBX from there — or generate in Blender to begin with, where the rig is
+already native.</p>
+<p><strong>Restart</strong> — clearing the motion without reloading the page — already exists,
+under the Generate tab.</p>
+<hr />
+<h2 id="when-something-is-wrong">When something is wrong</h2>
+<p><strong>"ARDY is still loading the model"</strong> — the engine starts before it is ready.
+Wait for <em>Ready</em>.</p>
+<p><strong>"This bridge was started without a text encoder"</strong> — Skip Text Encoder is
+ticked. Untick it and reconnect.</p>
+<p><strong>Connecting fails right away</strong> — check that <strong>ARDY Python</strong> in the add-on
+preferences points at a real <code>.venv\Scripts\python.exe</code>.</p>
+<p><strong>The character walks on the spot</strong> — that is the model, not a bug. Some seeds
+produce a walk that barely travels. Change the seed, or ask for something with
+more intent: <em>"a person runs forward quickly"</em>.</p>
+<p><strong>Pose keys seem ignored</strong> — make sure <strong>Reduce Foot Skating</strong> is on. Note that
+the G1 robot skips that pass entirely, so poses only guide it there.</p>
+<p><strong>The retarget looks broken</strong> — check the family under Target matches the rig
+you picked.</p>
+<p><strong>"Cascadeur is not listening on 127.0.0.1:9564"</strong> — its side is off. In
+Cascadeur: <code>Animation Scripts</code> → <strong>Receive Poses (Blender)</strong>.</p>
+<p><strong>Keyframes arrive but the character is turned the wrong way</strong> — Cascadeur was
+restarted after the character was sent. It only knows how to place the motion
+if it still holds the record it made when the character arrived. Press <strong>Send
+Character</strong> again, then send the keyframes.</p>
+<p><strong>Keyframes go nowhere and nothing says why</strong> — the joint names sent do not
+match anything Cascadeur has open. Check the line above the buttons: it says
+how many bones were matched and under which naming.</p>
+<p><strong>Limbs bend oddly on Cascadeur's own character</strong> — expected to a degree.
+Cascadeur keeps its character's bone lengths, so a rig with different
+proportions is fitted rather than copied.</p>
+<p><strong>Live stutters, or one window takes seconds</strong> — read the second line of the
+Live panel, <code>gen X + hold Y of 2000 ms</code>. If <strong>gen</strong> is in the thousands, the
+text encoder is on your graphics card crowding out the motion model; set
+<strong>Text Encoder On</strong> to <em>Auto</em> or <em>CPU</em> and reconnect. See <em>Why the text
+encoder runs on the CPU</em>.</p>
+<p><strong>The panel says Connecting and the button is greyed out</strong> — a session that
+was closed mid-connect. Opening a file clears it; so does re-enabling the
+add-on.</p>
+<p><strong>Characters ignore their targets and walk off on their own headings</strong> — fixed.
+If you see it, the add-on is an older copy.</p>
+<p><strong>Windows warns about low memory, or Python crashes while connecting</strong> — two
+copies of the 14 GB text encoder are loaded at once. Only one is ever needed:
+press <strong>Stop</strong> under the text encoder, close any other Blender running
+MotionForge, and connect again.</p>
+<p>For anything else, Blender's system console (<code>Window ▸ Toggle System Console</code>)
+carries the engine's own messages.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
