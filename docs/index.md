@@ -1,7 +1,5 @@
 # MotionForge
 
-![MotionForge](assets/motionforge04.png)
-
 🇺🇸 English | [🇰🇷 한국어](./KO_index.md)
 
 Type what a character should do. Get an animation in Blender.
@@ -11,21 +9,15 @@ onto a rig you can edit like any other. You can also steer the character live,
 pin poses it has to hit, move the motion onto your own character, and hand it
 straight to Cascadeur.
 
-![Cascadeur](assets/cascadeur.jpg)
-Please subscribe to Cascadeur via the link below. Thank you.
+**New in 0.3.0** — **MotionBricks**, a second way to move a character.
+Instead of typing a sentence, you pick how it moves — walking, sneaking,
+crawling, limping, dancing — and either point it a direction or drop a marker
+for it to walk to and stop. It arrives, turns to face the way you aimed the
+marker, and stands there. See [*MotionBricks*](#motionbricks).
 
-https://cascadeur.com/?ref=chamiseul
-
-**New in 0.2.0** — *Send to Cascadeur*. A character, or just its animation,
-goes over to Cascadeur without an FBX round trip by hand. See
-[*Sending it to Cascadeur*](#sending-it-to-cascadeur).
-
-**Also new** — the trip home. **Receive from Cascadeur** brings the work back
-onto the rig you sent, at the speed it left or at any other speed you pick.
-Rigs built out of several skeletons, such as the Team Fortress 2 Trifecta
-rigs, are merged into one on the way over so hats, pouches and weapons arrive
-attached, and Cascadeur's Rig Mode is filled in for you. See
-[*Bringing it back*](#bringing-it-back).
+MotionBricks needs no install console and no waiting: one folder, and the
+first walk is on screen in about half a second. It needs Blender 5.2 or newer.
+Everything else in MotionForge is unchanged.
 
 ---
 
@@ -35,12 +27,16 @@ attached, and Cascadeur's Rig Mode is filled in for you. See
 folder here and puts everything in it — nothing else on the machine changes.
 It needs Python 3.12, Git, an NVIDIA GPU, and about 10 GB of disk.
 
+**1b. Or install MotionBricks instead.** If you only want MotionBricks, skip step 1: there is nothing to build. Put its folder anywhere and point the add-on at it in step 3b. It needs Blender 5.2 or newer.
+
 **2. Install the add-on.** In Blender: `Edit ▸ Preferences ▸ Add-ons ▸ Install`,
 pick the `motionforge` folder, tick it on.
 
 **3. Point it at the engine.** Still in the add-on's preferences, set
 **ARDY Python** to the `.venv\Scripts\python.exe` that `install.bat` printed
 when it finished.
+
+**3b. Point it at MotionBricks.** In the same preferences, set the **MotionBricks Folder** to the folder holding `bin`, `models` and `licenses`. It says straight away what it found. If you have not got it yet, **Install MotionBricks** fetches it — about 700 MB, with a progress bar in the same panel.
 
 **4. Get access to the text encoder.** ARDY reads your prompt with a Meta
 Llama model that requires accepting a licence:
@@ -67,10 +63,10 @@ called a **target rig** — so the motion plays on your own character.
 
 ---
 
-## The five panels
+## The six panels
 
 Press `N` in the 3D viewport and a **MotionForge** tab appears in the right-hand
-sidebar. It holds five panels, in the order you will use them.
+sidebar. It holds six panels, in the order you will use them.
 
 ### 1. MotionForge — connect and make a rig
 
@@ -100,8 +96,6 @@ sidebar. It holds five panels, in the order you will use them.
 
 ### 3. Live Path — steer while it plays
 
-<video src="assets/start_live.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="start_live"></video>
-
 | Control | What it does |
 | --- | --- |
 | **Live takes list** | One row per character in the run. **+** adds a row; each carries its own prompt, rig, seed and target. |
@@ -111,9 +105,39 @@ sidebar. It holds five panels, in the order you will use them.
 | **Face Target Direction** | Powers the cone's rotation so the character can walk sideways, backwards, or round something while watching it. |
 | **Bake / Discard** | Writes the held take as a real Action, or throws it away. |
 
-### 4. Retarget — put the motion on your own character
+### 4. MotionBricks — walk without typing
 
-<video src="assets/retarget_live.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="retarget_live"></video>
+| Control | What it does |
+| --- | --- |
+| **Character list** | Every MotionBricks character in the scene, one per row. The **tick box** decides who takes part; the highlighted row is the one you are editing. |
+| **+** / **−** | Adds a character at the 3D cursor, or takes the selected one out of the list. |
+| **Eyedropper** | Adds the selected armature to the list, if it is a MotionBricks character. |
+| **With a Body** | A new character gets a simple mesh over its bones, weighted to the skeleton. Bones alone are hard to follow while a character walks around. Untick it for bones only. |
+
+Each character carries its own settings, shown under the list:
+
+| Per character | What it does |
+| --- | --- |
+| **Style** | How this one moves. Walking, slow, stealthy, scared, zombie, boxing, crawling on hands or elbows, happy dancing, limping, and walking with a gun. Also shown on its row, so a crowd reads at a glance. |
+| **Go** | **In a Direction** keeps going the way you set — and follows the 3D cursor while live. **To a Target** walks to an object of its own and stops, cursor or not. |
+| **Heading** | Which way this one walks, when you chose a direction. |
+| **Target** | The object this one walks to. The **+** beside it makes one. Turn the object and the character faces that way on arrival. |
+| **Speed** | Metres per second. Leave it at zero to use the style's own pace. A style with no pace of its own, like *Idle*, stays where it is. |
+| **Seed** | Changes where the stride begins. If a walk lands awkwardly, try another number. |
+
+| Shared | What it does |
+| --- | --- |
+| **Duration** | Seconds to make, for every ticked character. |
+| **Continue** | Carry on from where the last one stopped, in the same animation. |
+| **Generate Motion** | Makes it, for every ticked character at once. They start walking straight away — no keyframes are written yet. |
+| **Bake** | Writes what you are watching as keyframes, for all of them. |
+| **Discard** | Throws it away instead. |
+| **Steer With** | How you drive them live: **3D Cursor** — shift-right-click anywhere and they walk there, facing the way they go — or **Target Object**, where each walks to its own. |
+| **Move Characters Too** | Your own characters walk along with them, using the rows in **Share With Characters** below. They are posed, not keyed. |
+| **Lead** | How many frames to keep planned ahead. Higher rides out a slow frame; lower answers the controls sooner. |
+| **Start Live** | Walks now, steered as it goes. `Esc` stops it. |
+
+### 5. Retarget — put the motion on your own character
 
 | Control | What it does |
 | --- | --- |
@@ -126,15 +150,14 @@ sidebar. It holds five panels, in the order you will use them.
 | **Retarget** | Runs the copy. |
 | **Share With Characters** | Copies each take onto several characters at once (see below). |
 
-### 5. Send to Cascadeur — hand the motion over
-
-<video src="assets/send_cas.mp4" autoplay loop muted playsinline style="width:100%;border-radius:6px" title="send_cas"></video>
+### 6. Send to Cascadeur — hand the motion over
 
 Always visible; it tells you what it needs rather than hiding until the right
 thing is selected.
 
 | Control | What it does |
 | --- | --- |
+| **Live: Mirror This Rig** | Pose here or in Cascadeur and the other side follows, in real time. See [*Watching it in Cascadeur, live*](#watching-it-in-cascadeur-live). |
 | **Send** | **Character and Bones** sends the rig itself — bones, meshes, animation — as a scene Cascadeur opens. **Keyframes Only** puts motion on a character Cascadeur already has. |
 | **Rig Type** | Keyframes mode only. Which naming your rig uses, so its bones can be matched to Cascadeur's. Auto-detected; set it by hand if the guess is wrong. |
 | **With Mesh** | Character mode only. Include the meshes bound to the rig. |
@@ -148,6 +171,110 @@ See [*Sending it to Cascadeur*](#sending-it-to-cascadeur) for the order these
 have to be used in.
 
 ---
+
+## MotionBricks
+
+The other way to move a character. **Text to Motion** takes a sentence;
+this takes a style and a direction, and it is quick enough that trying five
+of them costs nothing.
+
+**Make a walk**
+
+1. Open the **MotionBricks** panel.
+2. Pick a **Style** — start with *Walk*.
+3. Set **Duration** and press **Generate Motion**.
+4. Press play. If you like it, press **Bake**.
+
+A character appears if you did not have one — bones with a body over them —
+and it walks immediately —
+**Generate Motion** does not write keyframes, so trying ten walks costs
+almost nothing. **Bake** turns the one you kept into keyframes; **Discard**
+throws it away. Nothing else in Blender sees the motion until you bake it,
+so retargeting and exporting come after that.
+
+**Send it somewhere**
+
+1. Set **Go** to *To a Target* and press **+**.
+2. Move the marker where the character should end up.
+3. Turn the marker so its arrow points the way the character should face when
+   it gets there.
+4. **Generate Motion**, then **Bake**.
+
+It walks over, slows down as it arrives, turns to face the arrow and stands
+still. Give it more seconds than it needs — waiting there costs nothing, and
+too few seconds stops it partway.
+
+**Keep going**
+
+Tick **Continue** and press **Generate Motion** again. It adds to whatever is
+there, baked or not, so you can build up a long performance a few seconds at a
+time and bake the whole thing once at the end. Change the style or the
+target first and the character changes what it is doing on the way, with no
+join to hide.
+
+**A crowd**
+
+Press **+** for each one and give each row its own **Style**. They all walk at
+once, live or generated: one walking, one idling, one crawling, each at its own
+speed.
+
+Untick a row and that character sits out — it keeps what it already has and is
+simply not part of the next **Generate Motion** or **Start Live**. Tick it back
+on whenever you want it moving again.
+
+While live, a character set to **In a Direction** follows the 3D cursor, and one
+set to **To a Target** walks to its own object instead — so you can send most of
+a crowd somewhere with one click while a few keep their own errands. A character
+whose style has no pace of its own, like *Idle*, stays where it is rather than
+being dragged along.
+
+Deleting a character from the scene drops its row too.
+
+**Steer it as it walks**
+
+**Generate Motion** asks for a stretch of movement all at once. **Start Live**
+does it the other way: the character walks immediately and keeps walking while
+you steer it.
+
+1. Under **Live**, leave **Steer With** on **3D Cursor**.
+2. Press **Start Live**.
+3. Shift-right-click anywhere in the viewport. The character walks there,
+   facing the way it is going, and waits when it arrives. Click somewhere
+   else and it sets off again.
+
+   Only where you clicked on the floor matters. Click a wall or a prop and
+   the cursor still sits on the ground, so you can always see the spot you
+   picked. It stays on whatever height the cursor was at when you pressed
+   **Start Live**, and goes back to behaving normally when you stop.
+4. `Esc` stops it. Press **Bake** to keep what it did.
+
+The cursor is the quickest way to direct it: nothing to select, nothing to
+drag, and it goes wherever you point. **Target Object** is the other way, and
+worth it when you care which way the character ends up looking — it faces the
+object's arrow instead of the way it walked in.
+
+It adds to the same held motion **Generate Motion** uses, so the two can be
+mixed in one take — walk a stretch live, then ask for ten more seconds to a
+target, then bake the lot at once.
+
+**Your own character, while it walks**
+
+Leave **Move Characters Too** on and the characters listed in **Share With
+Characters** walk along with it as you steer, rather than only after you bake.
+They are posed, not keyed, so there is nothing of theirs to undo — the walk is
+still written by **Bake** and **Retarget**.
+
+This is also the answer to the head. A MotionBricks skeleton has no neck or
+head, but your character does, and retargeting only touches the bones the two
+share — so the head stays where your rig puts it instead of being dragged
+around by a robot that has none.
+
+**Put it on your character**
+
+The **Retarget** panel below works exactly as it does for *Text to Motion* —
+the walk moves onto your own character, scaled to their size, feet on the
+floor. The head and neck stay where they are: MotionBricks moves the body and
+the arms, and has nothing to say about the head.
 
 ## Source rig vs. target rig, plainly
 
@@ -563,6 +690,35 @@ what Perceiving Systems' Unreal plugin wants. Body shape is read from the
 body's own shape keys if the Meshcapade add-on left them there.
 
 ---
+
+## Watching it in Cascadeur, live
+
+The Send buttons hand over a finished take. **Live: Mirror This Rig**, on the
+Send to Cascadeur panel, is earlier than that: pose the rig in Blender and
+the character in Cascadeur moves with it, in real time, while you work.
+Nothing is installed for it - no plug-in, no Administrator.
+
+**In Cascadeur, run Receive Poses (Blender) first** - commands menu. That is
+what the whole panel needs, Live included; nothing here works before it is
+running. **Then send the character across once, and press Live.** Live
+reuses the same bone mapping and reference pose Send does, so a character
+that has not been sent yet has nothing for Live to drive.
+
+**Which way it mirrors** is a dropdown next to the button:
+
+- **Follow the Focus** - pose in whichever window you are working in, and
+  the other one follows. Click over to Cascadeur and it takes over from
+  there.
+- **Blender to Cascadeur** - only what you do here is sent.
+- **Cascadeur to Blender** - only what you do there comes back.
+
+**How much of the rig moves** is the dropdown beside it: the mapped bones
+Send always uses, or the whole skeleton (only when the character in
+Cascadeur is the one this rig sent).
+
+Playing an animation in Blender plays it in Cascadeur too, keyed there as it
+goes. **Stop Mirroring** ends the session; whatever already arrived in
+Cascadeur stays.
 
 ## Sending it to Cascadeur
 
