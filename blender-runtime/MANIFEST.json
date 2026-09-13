@@ -1,0 +1,61 @@
+{
+  "format": "ardy-runtime-manifest-v1",
+  "runtime": "ardy.cpp windows x64, Vulkan GPU backend with a CPU-only twin (ARDY_BACKEND=cpu forces CPU), MSVC 2022, ggml 8c63e70982c95ceb862e3a1073a2c1beef75d60a",
+  "files": [
+    {
+      "path": "ardy-server.exe",
+      "bytes": 550912,
+      "sha256": "d340a6b83bd527e8488106a05764486e717b8ab6e4afbd1d35a4f03d3b29d9d4"
+    },
+    {
+      "path": "ardy-generate.exe",
+      "bytes": 422400,
+      "sha256": "f16b5a47b2f9742f11b0dd7b003f02444b4230ffd001475e76033f859ab22d99"
+    },
+    {
+      "path": "ggml.dll",
+      "bytes": 67072,
+      "sha256": "dd6941af64c612f48596ff066ec30fb745e97555f88a7ca0ce7568ecc9c3f6a7"
+    },
+    {
+      "path": "ggml-base.dll",
+      "bytes": 652288,
+      "sha256": "15b877ecc72b44d6910bb9d58f2283e9df3953fc92cce167d88f0d5200ed8154"
+    },
+    {
+      "path": "ggml-cpu.dll",
+      "bytes": 804352,
+      "sha256": "765ec6e6d45d791d18e78431e59fb580618330a9815f4056cfb8c9ac0bac58bf"
+    },
+    {
+      "path": "ggml-vulkan.dll",
+      "bytes": 54322176,
+      "sha256": "b1f6da76d7bbe52125055a9ee40c37849508acb90fbe03deee37252570a9c4ef"
+    },
+    {
+      "path": "cpu-fallback/ardy-server.exe",
+      "bytes": 550400,
+      "sha256": "c476d07749aa6e3b3b8b43048b26fafee11c9fdc48a19c59643f724d91f3f203"
+    },
+    {
+      "path": "cpu-fallback/ardy-generate.exe",
+      "bytes": 420352,
+      "sha256": "2f8118c2f72d70aad23c571e904d1b637179cc028931cb546537323de8ca1236"
+    },
+    {
+      "path": "cpu-fallback/ggml.dll",
+      "bytes": 67072,
+      "sha256": "147bfe05602c9e132c7a2d9696b9e9fe19745a569d5a2e94d7cae6fc14b3cdfa"
+    },
+    {
+      "path": "cpu-fallback/ggml-base.dll",
+      "bytes": 652288,
+      "sha256": "257396d4484d2d856837f62ee018cfa6b28d67ccedd922b6307836bcacdf9745"
+    },
+    {
+      "path": "cpu-fallback/ggml-cpu.dll",
+      "bytes": 804352,
+      "sha256": "bfbc0e1b0cefde7892be8b24fc22242209158a27a5c1043ef05578502675d8a6"
+    }
+  ]
+}
