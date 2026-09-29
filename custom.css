@@ -1,0 +1,95 @@
+
+/* 1. 모든 메뉴의 아이콘(가상 요소) 강제 제거 */
+.wy-menu-vertical li span.toctree-expand,
+.wy-menu-vertical li::before,
+.wy-menu-vertical li a::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* 2. 메뉴 텍스트가 아이콘 자리를 차지하지 않도록 여백 조정 */
+.wy-menu-vertical li a {
+    padding-left: 20px !important; /* 왼쪽 여백을 일정하게 정렬 */
+}
+
+/* 3. 하위 메뉴(Level 2, 3...)는 조금 더 안으로 들여쓰기 (선택 사항) */
+.wy-menu-vertical li li a {
+    padding-left: 30px !important;
+}
+.wy-menu-vertical li li li a {
+    padding-left: 40px !important;
+}
+
+/* [강제 메뉴 펼침] 모든 단계의 하위 메뉴를 항상 표시 */
+.wy-menu-vertical li ul {
+    display: block !important;
+}
+
+/* [+] 버튼(화살표) 제거 */
+.wy-menu-vertical span.toctree-expand {
+    display: none !important;
+}
+
+/* 1. 상단 바 및 검색창 영역 (포인트 블루) */
+.wy-side-nav-search, .wy-nav-top {
+    background-color: #2980b9 !important;
+}
+
+/* 2. 사이드바 전체 배경색 (진한 다크 회색) */
+.wy-nav-side {
+    background: #343131 !important;
+}
+
+/* 3. 그룹 제목 (GROOMFORGE GUIDE 등) - 간격 촘촘하게 */
+.wy-menu-vertical p.caption {
+    color: #ffffff !important;
+    background: #343131 !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    font-size: 0.85em !important;
+    margin: 10px 0 0 0 !important;
+    padding: 5px 20px !important;
+}
+
+/* 4. 일반 메뉴 항목 (줄간격 최적화) */
+.wy-menu-vertical li a {
+    color: #d9d9d9 !important;
+    padding: 5px 20px !important;
+    line-height: 1.2 !important;
+    font-size: 0.9em !important;
+    border-left: none !important; /* 왼쪽 주황색 선 제거 */
+}
+
+/* 5. 메뉴 호버 효과 */
+.wy-menu-vertical li a:hover {
+    background: #4e4a4a !important;
+    color: #ffffff !important;
+}
+
+/* 6. 현재 선택된 메뉴 (반전 스타일: 흰색 배경) */
+.wy-menu-vertical li.current > a {
+    background: #fcfcfc !important;
+    color: #404040 !important;
+    font-weight: bold !important;
+}
+
+/* 7. 현재 선택된 메뉴의 하위 목록 (연회색 배경) */
+.wy-menu-vertical li.current ul {
+    background: #e3e3e3 !important;
+    padding-bottom: 5px !important;
+}
+
+/* 8. 하위 목록 내 글자색 및 간격 */
+.wy-menu-vertical li.current li a {
+    color: #404040 !important;
+    padding: 3px 30px !important;
+}
+
+.wy-menu-vertical li.current li a:hover {
+    background: #d6d6d6 !important;
+}
+
+/* 검색창 입력 박스 테두리 정리 */
+.wy-side-nav-search input[type=text] {
+    border-color: rgba(255,255,255,0.2) !important;
+}
