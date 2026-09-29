@@ -9,40 +9,63 @@ onto a rig you can edit like any other. You can also steer the character live,
 pin poses it has to hit, move the motion onto your own character, and hand it
 straight to Cascadeur.
 
-**New in 0.3.0** — **MotionBricks**, a second way to move a character.
-Instead of typing a sentence, you pick how it moves — walking, sneaking,
-crawling, limping, dancing — and either point it a direction or drop a marker
-for it to walk to and stop. It arrives, turns to face the way you aimed the
-marker, and stands there. See [*MotionBricks*](#motionbricks).
+## What's new in 0.5.0
 
-MotionBricks needs no install console and no waiting: one folder, and the
-first walk is on screen in about half a second. It needs Blender 5.2 or newer.
-Everything else in MotionForge is unchanged.
+### New
+
+**MotionBricks characters stand like people**
+- A new MotionBricks character stands the way the idle style stands, arms down, instead of in the robot's zero pose.
+
+**A converted style follows its clip**
+- **Import FBX / BVH** fills in **Speed** with the speed the clip was performed at, and allows every generation length.
+- Picking an armature already in the scene as **Source** fills in **Speed** the same way, so a dance done on the spot stays on the spot.
+- A character walking the style plays the clip through in order, instead of circling its first few frames.
+- Measured frame by frame against the source: a drunk walk comes out 13 cm from it instead of 18, and a taunt performed on the spot 8 cm instead of 15 - and it now stays on the spot.
+
+**An FBX or BVH becomes a MotionBricks style**
+- **Import FBX / BVH** in the MotionBricks panel brings a mocap or animation file into the scene and points the converter at it. **Convert to Style** moves the clip onto the skeleton MotionBricks walks and writes the file.
+- No MotionBricks character has to exist first and none is left behind afterwards: a file goes in and a `.mbstyle` comes out, in the folder beside *walk* and the rest.
+- **Rig Type** says what the file calls its bones - Mixamo, UE4, UE5 Mannequin, Fortnite, MetaHuman, Rigify, the metarig, TF2, SMPL-X and more - and **Auto-Detect** reads them, so the usual cases need no choice at all. Mixamo names without the `mixamorig:` in front, which is what CMU's converted takes and most BVH exports carry, are recognised too.
+- A BVH's own frame rate is read from the file and the scene set to match, and whatever the rate the clip is re-timed to the runtime's 30 fps - a 120 fps take keeps its length instead of playing four times fast.
+- **Style Name**, **Speed** and **Allowed Durations** are yours to change; Import fills in the last two from the clip. Everything the runtime tests is tested before the file is written, so a style it would refuse is refused here instead, with the reason, and nothing half-written is left in the folder.
+
+**Styles from the scene as well**
+- An animation that is already on a MotionBricks character can be saved out the same way with **Save as Style**.
+
+### Changed
+
+**A new style shows up at once**
+- Converting or saving re-reads the styles folder. Before, the engine kept the list it loaded at startup, so a style replaced under the same name kept its old motion.
+
+**UE4 joins the rig types**
+- The UE4 and UE5 mannequins share one skeleton - UE5 only added IK bones to it - so both are in the list and both map the same way.
+
+### Fixed
+
+- A style converted from a Mixamo download no longer throws the character tens of metres through the floor.
+- A style converted from a character with longer legs than the robot - a Fortnite dance - no longer hovers and bobs; its feet stay on the floor.
+- The check after **Convert to Style** walks the style at its own Speed, so a clip performed on the spot is no longer reported as running away.
+
+### Removed
+
+- **Pull the Arms Back if Refused** - the clips it rescued convert properly now, with their arms.
 
 ---
 
 ## Setup, once
 
-**1. Install the engine.** Double-click `install.bat`. It makes a `.venv`
-folder here and puts everything in it — nothing else on the machine changes.
-It needs Python 3.12, Git, an NVIDIA GPU, and about 10 GB of disk.
-
-**1b. Or install MotionBricks instead.** If you only want MotionBricks, skip step 1: there is nothing to build. Put its folder anywhere and point the add-on at it in step 3b. It needs Blender 5.2 or newer.
-
-**2. Install the add-on.** In Blender: `Edit ▸ Preferences ▸ Add-ons ▸ Install`,
+**1. Install the add-on.** In Blender: `Edit ▸ Preferences ▸ Add-ons ▸ Install`,
 pick the `motionforge` folder, tick it on.
 
-**3. Point it at the engine.** Still in the add-on's preferences, set
-**ARDY Python** to the `.venv\Scripts\python.exe` that `install.bat` printed
-when it finished.
-
-**3b. Point it at MotionBricks.** In the same preferences, set the **MotionBricks Folder** to the folder holding `bin`, `models` and `licenses`. It says straight away what it found. If you have not got it yet, **Install MotionBricks** fetches it — about 700 MB, with a progress bar in the same panel.
-
-**4. Get access to the text encoder.** ARDY reads your prompt with a Meta
-Llama model that requires accepting a licence:
-
-- accept it at `huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct`
-- run `huggingface-cli login` in a terminal and paste your token
+**2. Install the engines.** Still in the add-on's preferences, set the
+**Engine Folder** to an empty folder on a drive with about 18 GB free, then
+press **Install Engines**. MotionBricks, Kimodo and ARDY all go into that one
+folder. **The download is about 18 GB, so it takes a long time** — anywhere
+from several minutes to over an hour depending on your connection. A progress
+bar in the same panel shows each file as it arrives, and Blender stays usable
+meanwhile. If it stops partway, press **Install Engines** again: files already
+downloaded are kept, and only the rest is fetched. When it is done, all three
+engines show **ready**. MotionBricks needs Blender 5.2 or newer.
 
 Press `N` in the 3D viewport and the **MotionForge** tab is there.
 
@@ -63,18 +86,17 @@ called a **target rig** — so the motion plays on your own character.
 
 ---
 
-## The six panels
+## The seven panels
 
 Press `N` in the 3D viewport and a **MotionForge** tab appears in the right-hand
-sidebar. It holds six panels, in the order you will use them.
+sidebar. It holds seven panels, in the order you will use them.
 
 ### 1. MotionForge — connect and make a rig
 
 | Control | What it does |
 | --- | --- |
-| **Model** | Which ARDY skeleton to use. Keep **Core** — it covers nearly everything. |
-| **Text Encoder** | Optional, but strongly recommended (see *The shared text encoder* below). |
-| **Connect ARDY** | Loads the engine. The first run downloads several GB; wait for **Ready**. About a minute the first time, then about 5 seconds — it keeps the text encoder loaded between connections. |
+| **Skip Text Encoder** | Connects without reading prompts. Only for checking that ARDY starts. |
+| **Connect ARDY** | Loads the engine. Ready in about a second. |
 | **Create Rig** | Builds an armature — this is your **source rig**, the skeleton the model will animate. |
 | **Generated Rigs** list | Every source rig you have made. **Use \<name\>** makes one the active source. |
 | **Active source** | The rig that current takes are generated onto. |
@@ -105,14 +127,43 @@ sidebar. It holds six panels, in the order you will use them.
 | **Face Target Direction** | Powers the cone's rotation so the character can walk sideways, backwards, or round something while watching it. |
 | **Bake / Discard** | Writes the held take as a real Action, or throws it away. |
 
-### 4. MotionBricks — walk without typing
+### 4. Kimodo — text to motion, on your own machine
+
+| Control | What it does |
+| --- | --- |
+| **Character list** | Every Kimodo character in the scene, one per row. The **tick box** decides who takes part; the highlighted row is the one you are editing. Each row shows **77** (with fingers) or **30** (without). |
+| **+** / **−** | Adds a character at the 3D cursor, or takes the selected one out of the list. **−** asks whether to delete the armature too. |
+| **Eyedropper** | Adds the selected armature to the list, if it has Kimodo's bones. |
+| **With a Body** | A new character gets a body mesh. |
+| **With Fingers** | A new character gets hands with fingers. Untick it for a simpler skeleton without them. |
+
+Each character carries its own settings, shown under the list:
+
+| Per character | What it does |
+| --- | --- |
+| **Prompt** | A plain sentence, e.g. *"a person walks forward"*. |
+| **Seed** | `-1` gives something new each time; a fixed number repeats the same result. |
+
+| Shared | What it does |
+| --- | --- |
+| **Duration** | Length of each take in seconds. |
+| **Denoising Steps** | Fewer is faster and rougher. |
+| **Prompt Strength** | How closely it follows the prompt. Higher is more literal and less natural. |
+| **Constraint Strength** | Leave it as it is. |
+| **Reduce Foot Skating** | Stops a foot sliding while it stands on the ground. On by default. |
+| **Generate Motion** | Makes a take for every ticked character, one after another, and keys each as soon as it is ready. |
+| **Status line** | Which character is being made, how long it has been running, and whether it is on the GPU or the CPU. |
+| **Export SOMA BVH** | Saves the selected character's animation for NVIDIA's SOMA Retargeter, which turns it into humanoid robot motion. |
+| **Reload Engine** | Unloads Kimodo. The next take loads it again. |
+
+### 5. MotionBricks — walk without typing
 
 | Control | What it does |
 | --- | --- |
 | **Character list** | Every MotionBricks character in the scene, one per row. The **tick box** decides who takes part; the highlighted row is the one you are editing. |
 | **+** / **−** | Adds a character at the 3D cursor, or takes the selected one out of the list. |
 | **Eyedropper** | Adds the selected armature to the list, if it is a MotionBricks character. |
-| **With a Body** | A new character gets a simple mesh over its bones, weighted to the skeleton. Bones alone are hard to follow while a character walks around. Untick it for bones only. |
+| **With a Body** | A new character gets a simple body, weighted to the skeleton. Bones alone are hard to follow while a character walks around. Untick it for bones only. |
 
 Each character carries its own settings, shown under the list:
 
@@ -128,6 +179,7 @@ Each character carries its own settings, shown under the list:
 | Shared | What it does |
 | --- | --- |
 | **Duration** | Seconds to make, for every ticked character. |
+| **Reduce Foot Skating** | Stops a foot sliding while it stands on the ground. On by default. |
 | **Continue** | Carry on from where the last one stopped, in the same animation. |
 | **Generate Motion** | Makes it, for every ticked character at once. They start walking straight away — no keyframes are written yet. |
 | **Bake** | Writes what you are watching as keyframes, for all of them. |
@@ -137,7 +189,7 @@ Each character carries its own settings, shown under the list:
 | **Lead** | How many frames to keep planned ahead. Higher rides out a slow frame; lower answers the controls sooner. |
 | **Start Live** | Walks now, steered as it goes. `Esc` stops it. |
 
-### 5. Retarget — put the motion on your own character
+### 6. Retarget — put the motion on your own character
 
 | Control | What it does |
 | --- | --- |
@@ -150,7 +202,7 @@ Each character carries its own settings, shown under the list:
 | **Retarget** | Runs the copy. |
 | **Share With Characters** | Copies each take onto several characters at once (see below). |
 
-### 6. Send to Cascadeur — hand the motion over
+### 7. Send to Cascadeur — hand the motion over
 
 Always visible; it tells you what it needs rather than hiding until the right
 thing is selected.
@@ -171,6 +223,63 @@ See [*Sending it to Cascadeur*](#sending-it-to-cascadeur) for the order these
 have to be used in.
 
 ---
+
+## Kimodo
+
+A third way to make motion. Like **Text to Motion**, you type what the
+character should do — but Kimodo runs by itself, with no install console and
+nothing to connect first.
+
+**Make a take**
+
+1. Open the **Kimodo** panel.
+2. Press **+**. A character appears at the 3D cursor.
+3. Type a **Prompt** under the list — start with *"a person walks forward"*.
+4. Set **Duration** and press **Generate Motion**.
+
+A take takes a while — longer on the CPU than on the GPU. Blender stays usable
+while it works, and the status line counts the seconds. When it finishes, the
+motion is already keyed on the character; press play. `Esc` stops waiting, but
+the take that is running cannot be interrupted.
+
+Did not press **+** first? **Generate Motion** makes a character for you.
+
+**Several characters**
+
+Press **+** for each one and give each row its own **Prompt** and **Seed**.
+**Generate Motion** makes them one after another, and each character gets its
+motion as soon as its own take is done. Untick a row and that character sits
+out.
+
+**Send it to a humanoid robot**
+
+**Export SOMA BVH** saves the character's animation as a BVH file that
+NVIDIA's [SOMA Retargeter](https://github.com/NVIDIA/soma-retargeter) reads.
+That tool turns it into joint animation for Unitree G1 and H2, Booster T1 and
+the AgiBot X2 and A3, and writes a CSV their control and simulation tools take.
+
+The file holds whatever the character does now, so edits you made in Blender
+travel with it. Install the retargeter separately - it is a project of its own
+and nothing here is needed for it to run.
+
+**Put it on your character**
+
+The **Retarget** panel works exactly as it does for *Text to Motion*. The
+character you added last is already set as the source.
+
+**Send it to Cascadeur**
+
+In **Send to Cascadeur**, choose **Character and Bones**, leave **Fill Rig
+Mode** on and press **Send Frame Range**. The character opens in Cascadeur with
+the Quick Rigging Tool filled in, fingers included.
+
+**Wait before opening the Quick Rigging Tool.** The joints are filled in about
+30–40 seconds after the character appears in Cascadeur. The Send panel shows
+`Quick Rig: waiting for Cascadeur to settle` until then, and
+`Quick Rig: … registered as SOMA (Kimodo)` when it is done. Opened too early, the
+tool shows legs, neck and spine only partly filled.
+
+**Live: Mirror This Rig** works too, both ways, timeline included.
 
 ## MotionBricks
 
@@ -276,6 +385,33 @@ the walk moves onto your own character, scaled to their size, feet on the
 floor. The head and neck stay where they are: MotionBricks moves the body and
 the arms, and has nothing to say about the head.
 
+**Make a style from a file**
+
+A style is a short clip MotionBricks is shown before it is asked for anything,
+and it can come from any animation you have:
+
+1. Press **Import FBX / BVH** and pick the file - a CMU take, a Mixamo
+   download, an engine's export, anything with a skeleton in it.
+2. **Source** fills in and **Rig Type** is read from the bone names. If it
+   says *unrecognised*, pick the type by hand: Mixamo, UE4, UE5 Mannequin,
+   Fortnite, MetaHuman, Rigify, the metarig, TF2 or SMPL-X.
+3. Set **Style Name**, **Speed** - the walking speed the style is meant to be
+   used at - and **Allowed Durations**, how many of the planner's generation
+   lengths may use it. Import fills both in (picking a Source fills Speed): the clip's own speed, and all 11,
+   which is what follows the clip most closely.
+4. Press **Convert to Style**. The file lands in the styles folder and is in
+   the **Style** list straight away.
+
+The clip is re-timed to the runtime's 30 fps on the way, so its length in
+seconds is what it was in the file. Nothing has to be in the scene first, and
+what you imported stays where it is.
+
+**Save your own style**
+
+A style can also be made from what a MotionBricks character is already doing -
+a generated take, a retargeted walk, your own keys. **Save as Style** in the
+same panel writes the active character's animation out exactly the same way.
+
 ## Source rig vs. target rig, plainly
 
 - **Source rig** = the armature MotionForge *makes* and animates. You never have
@@ -315,7 +451,6 @@ better — longer performances, live steering, and copying to many characters.
 | **Retarget** | Copying animation from the source rig onto the target rig. |
 | **Waypoint** | "Be at this spot on this frame." |
 | **Pose key** | "Look like this on this frame." |
-| **Shared encoder** | A text-processing model loaded once and shared, so connecting is fast. |
 | **Foot skating** | A foot sliding along the ground when it should stay planted. |
 
 ---
@@ -456,8 +591,7 @@ ahead grows as the take does.
 **What to expect**
 
 - Steering shows up about 2 seconds later. What you are watching was already
-  decided. The **Core, short horizon** model reacts in 0.4 s instead, at some
-  cost in quality.
+  decided.
 - Keep the cone roughly a walk ahead of the character. Put it too far and the
   character breaks into a run; jerk it around and the footwork gets messy.
 - Live skips the foot-skating pass. If a live path is exactly what you wanted,
@@ -475,8 +609,7 @@ up to less than it, the loop is keeping ahead.
 
 - **gen** is generation. On an RTX 5080 one character costs about 130 ms and
   four cost about 490 ms, because the characters are generated one after
-  another. If **gen** is in the thousands, the text encoder is sitting on your
-  graphics card — see *Why the text encoder runs on the CPU* below.
+  another.
 - **hold** is what it costs to keep the window in memory, which is nothing.
 
 MotionForge generates further ahead when a cycle takes longer, so adding
@@ -846,183 +979,6 @@ interpolated, which is close but not the same thing.
 | **Prompt Strength** | How hard it tries to obey your words. |
 | **Constraint Strength** | How hard it tries to hit your waypoints and poses. |
 
-### Models
-
-| Model | Use it for |
-| --- | --- |
-| **Core (27 joints)** | Everything. This is the default. |
-| **Core, short horizon** | Live steering when you want faster reactions. |
-| **Unitree G1** | The humanoid robot. Adds a MuJoCo `qpos` CSV export. |
-| **SOMA** | Not released by NVIDIA yet. Connecting with it fails. |
-
-### Where the model weights live
-
-About 19 GB in total — 15 GB of it the text encoder, the rest the motion
-models. They are downloaded the first time you connect and kept forever after.
-
-**Checkpoints** in the add-on preferences decides where. Set it and everything
-is downloaded and read there. Leave it empty and Hugging Face keeps them in
-your user profile, under `C:\Users\<you>\.cache\huggingface`.
-
-Worth setting if your C: drive is tight, or if you want the weights beside the
-project rather than hidden in a profile folder. Changing it later does not
-move what has already been downloaded — copy the `models--*` folders across
-yourself, or the next connect fetches 19 GB again.
-
-### The shared text encoder
-
-Reading your prompt needs a 14 GB language model. It is loaded once and kept in
-a process of its own, so connecting takes about 5 seconds — including when you
-switch models or reconnect. **Connect** starts it for you the first time.
-Leave it running while you work; **Stop** in the same box frees the memory.
-
-It serves Blender only. The browser demo speaks a different protocol and always
-loads its own copy.
-
-#### Why the text encoder runs on the CPU
-
-Two models are involved, and they want very different things.
-
-| | What it does | How often |
-| --- | --- | --- |
-| **Text encoder**, 14 GB | Turns your prompt into numbers | Once, when a take starts |
-| **Motion model**, ~1 GB | Generates the actual movement | Every window, all run long |
-
-The motion model has to be on the graphics card — that is what makes a window
-take 130 ms instead of seconds. The text encoder does not: it runs once per
-take, and a second on the CPU costs you nothing you can feel.
-
-On a 16 GB card they do not both fit. Putting the 14 GB encoder there leaves
-the motion model without room, and it starts spilling — shuffling data on and
-off the card to keep working. Nothing fails, everything just crawls. Measured
-on an RTX 5080:
-
-| One window | Encoder on the card | Encoder on the CPU |
-| --- | --- | --- |
-| One character | 2059 ms | **131 ms** |
-| One character, following a target | 8084 ms | **140 ms** |
-| Four characters | 36829 ms | **490 ms** |
-
-A window plays for 2000 ms, so the left column cannot keep up with playback at
-all. That is the difference between live steering working and not.
-
-**Text Encoder On** lets you choose:
-
-| | |
-| --- | --- |
-| **Auto** | Measures your card. Under 20 GB, the encoder goes on the CPU. This is the default and it is right for almost everyone. |
-| **CPU** | Always on the CPU. |
-| **GPU** | Always on the card. Sensible on 24 GB and up, where both fit. Slightly faster prompt reading — 0.8 s instead of 1.6 s, once per take. |
-
-On the CPU the encoder never touches your graphics card at all, not even while
-loading, so you can have Unreal or a second Blender open while it starts.
-
----
-
-## In a browser instead
-
-`start_web.bat` opens NVIDIA's own interactive demo at
-`http://localhost:2333`. It is a different way to work — a timeline of prompts
-you scrub through, with no Blender involved.
-
-Run one at a time. The demo loads its own copy of the 14 GB text encoder, which
-on a 16 GB card leaves nothing for anything else. Disconnect in Blender, and
-stop the shared encoder, before starting it — otherwise the demo runs out of
-memory while loading and closes.
-
-`start_web.bat` launches it with four things fixed. None of them edit `ardy/`,
-so updates to NVIDIA's code still apply cleanly.
-
-**The timeline bar can be moved.** Two things were in the way. The demo
-re-ranged the bar to a 20-frame trailing window on *every* frame change —
-twenty times a second — which snapped the view back to the playhead and undid
-any scrolling as fast as you did it. And the left mouse button is spoken for:
-on the header it scrubs the playhead, on a track it makes keyframes, so
-click-dragging the view just moved the frame instead.
-
-| Gesture | What it does |
-| --- | --- |
-| **Middle-button drag** | Move along the take |
-| Wheel | Move along the take |
-| Shift + wheel | Zoom |
-| Left drag on the header | Scrub the playhead |
-
-Middle-button drag is added by patching viser's own web client, which lives in
-the virtual environment rather than in anything we ship. `install.bat` applies
-it and rebuilds. To undo it:
-
-```bash
-.venv\Scripts\python.exe motionforge\patch_timeline.py --revert
-```
-
-**Text tab** — the whole take is built here, beside the prompt it is made
-from. Making motion and watching it are separate, as they are in Blender.
-
-- **Prompt** and **Ends at Frame** — what the character does, and the frame it
-  runs to. The next prompt starts on the frame after.
-- **Add to Take** — queue it. Add as many as you like; they are generated one
-  after another, the way takes chain in Blender. The list shows the frame
-  range each one covers.
-- **Generate** — make the queued prompts in order, then stop. Nothing plays;
-  the playhead returns to the first frame when it is done. With an empty list
-  it just uses the Prompt box.
-- **Examples** — the stock demo's preset prompts, which it called "Prompt
-  List" even though pressing one replaced the prompt and regenerated on the
-  spot. Here they only fill the Prompt box.
-- **Use This Prompt From Here** — change the prompt at the playhead without
-  queueing anything, for steering a take by hand.
-
-Boundaries land on the frame you asked for. Queue *walks* to 30, *runs* to 100
-and *stops* to 200 and the take is 201 frames, changing on 31 and 101 — not on
-whatever multiple of the generation window came nearest.
-
-Generate only makes what is missing: add a fourth prompt and the first three
-are left alone, edit the second and everything from it onward is rebuilt.
-- **New Motion** — empty the take and go back to frame 0. It generates
-  nothing: the point is to start over, so add your prompts and press Generate.
-- **Clear Take List** — empty the queue, leaving the take alone.
-
-**Playback tab** only plays:
-
-- **Play** — replay what has been generated. It does not generate anything.
-- **Loop Playback** — start again at the first frame instead of stopping.
-- **Keep Generating While Playing** — off. The stock demo has this on with no
-  way to turn it off, which is why Play there generates forever and you can
-  never simply watch what you have. Tick it if you want that back.
-
-So the usual round is: **New Motion**, add two or three prompts, **Generate**,
-**Play** to look at it, **Export BVH** to keep it.
-
-Under Frame Index:
-
-- **First Frame** / **Last Frame**
-- **Start Frame**, **End Frame**, **Apply Range** — set exactly what the bar
-  shows
-- **Visible Frames** — zoom. Smaller is zoomed in
-- **Fit Whole Take** — put everything back on the bar
-
-The Frame Index box also accepts any frame; the stock one stops at 199 however
-long the take is.
-
-**Files tab**:
-
-- **Choose Mesh** — a real file picker, reading from *your* computer. The IO
-  tab's "Load 3D Mesh" only takes a path on the machine running the server.
-  Set **Scale** first, or change it and press **Apply Scale / Transform** to
-  reload the same file without picking it again. A room modelled in
-  centimetres needs 0.01 to sit right beside a character in metres.
-- **Export BVH** — the skeleton and its animation, in a file Blender, Maya,
-  MotionBuilder and Unreal all import. Scale 1.0 writes metres; 100 for tools
-  that expect centimetres, 0.01 for a rig that arrives far too big.
-
-There is no FBX export. FBX needs Autodesk's SDK, which is not part of this
-install and cannot be redistributed with it. Import the BVH into Blender and
-export FBX from there — or generate in Blender to begin with, where the rig is
-already native.
-
-**Restart** — clearing the motion without reloading the page — already exists,
-under the Generate tab.
-
 ---
 
 ## When something is wrong
@@ -1033,15 +989,14 @@ Wait for *Ready*.
 **"This bridge was started without a text encoder"** — Skip Text Encoder is
 ticked. Untick it and reconnect.
 
-**Connecting fails right away** — check that **ARDY Python** in the add-on
-preferences points at a real `.venv\Scripts\python.exe`.
+**Connecting fails right away** — open the add-on preferences. If ARDY is not
+**ready**, press **Install Engines**.
 
 **The character walks on the spot** — that is the model, not a bug. Some seeds
 produce a walk that barely travels. Change the seed, or ask for something with
 more intent: *"a person runs forward quickly"*.
 
-**Pose keys seem ignored** — make sure **Reduce Foot Skating** is on. Note that
-the G1 robot skips that pass entirely, so poses only guide it there.
+**Pose keys seem ignored** — make sure **Reduce Foot Skating** is on.
 
 **The retarget looks broken** — check the family under Target matches the rig
 you picked.
@@ -1062,23 +1017,12 @@ how many bones were matched and under which naming.
 Cascadeur keeps its character's bone lengths, so a rig with different
 proportions is fitted rather than copied.
 
-**Live stutters, or one window takes seconds** — read the second line of the
-Live panel, `gen X + hold Y of 2000 ms`. If **gen** is in the thousands, the
-text encoder is on your graphics card crowding out the motion model; set
-**Text Encoder On** to *Auto* or *CPU* and reconnect. See *Why the text
-encoder runs on the CPU*.
-
 **The panel says Connecting and the button is greyed out** — a session that
 was closed mid-connect. Opening a file clears it; so does re-enabling the
 add-on.
 
 **Characters ignore their targets and walk off on their own headings** — fixed.
 If you see it, the add-on is an older copy.
-
-**Windows warns about low memory, or Python crashes while connecting** — two
-copies of the 14 GB text encoder are loaded at once. Only one is ever needed:
-press **Stop** under the text encoder, close any other Blender running
-MotionForge, and connect again.
 
 For anything else, Blender's system console (`Window ▸ Toggle System Console`)
 carries the engine's own messages.
