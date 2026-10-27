@@ -9,46 +9,48 @@ onto a rig you can edit like any other. You can also steer the character live,
 pin poses it has to hit, move the motion onto your own character, and hand it
 straight to Cascadeur.
 
-## What's new in 0.5.0
+## What's new in 0.6.0
+
+> **Updating from 0.5.0 or older:** after installing 0.6.0, press **Install / Update Engines** in the add-on's preferences once. The MotionBricks runtime comes inside the add-on, and that button is what copies the new one into your Engine Folder; the person (SOMA Human) also needs it for its model and styles.
 
 ### New
 
-**MotionBricks characters stand like people**
-- A new MotionBricks character stands the way the idle style stands, arms down, instead of in the robot's zero pose.
+**A person joins MotionBricks**
+- The **+** in the MotionBricks panel asks for a **SOMA Human** or the **Unitree G1 Robot**. The person has the same Style, Go, Speed, **Generate Motion**, **Bake**, **Live** and Retarget as the robot, and it works from Blender 5.0.
+- A person's 14 styles - the robot's names, from idle and walk to injured, zombie, boxing and crawling - come with **Install Engines**. **Make Missing** in the Styles box makes any that are missing with Kimodo, and **Save as Style** adds your own from a baked or generated take.
+- The Styles box lists the styles, and a click gives the selected character that one.
+- **Install Engines** also fetches the person's model (380 MB) with NVIDIA's licence. It runs on the CPU.
 
-**A converted style follows its clip**
-- **Import FBX / BVH** fills in **Speed** with the speed the clip was performed at, and allows every generation length.
-- Picking an armature already in the scene as **Source** fills in **Speed** the same way, so a dance done on the spot stays on the spot.
-- A character walking the style plays the clip through in order, instead of circling its first few frames.
-- Measured frame by frame against the source: a drunk walk comes out 13 cm from it instead of 18, and a taunt performed on the spot 8 cm instead of 15 - and it now stays on the spot.
+**Takes, for the person and the robot**
+- Every character has a list of takes, the way ARDY has. A take has its own style, direction or target, speed, seed and length.
+- The takes run one after the other on one timeline - for example frames 1-30, 31-90, 91-135 - and **Generate Motion** makes all the ticked ones at once, each starting where the one before ended.
+- **Bake** writes them into one animation, and the play button on a take shows its stretch.
 
-**An FBX or BVH becomes a MotionBricks style**
-- **Import FBX / BVH** in the MotionBricks panel brings a mocap or animation file into the scene and points the converter at it. **Convert to Style** moves the clip onto the skeleton MotionBricks walks and writes the file.
-- No MotionBricks character has to exist first and none is left behind afterwards: a file goes in and a `.mbstyle` comes out, in the folder beside *walk* and the rest.
-- **Rig Type** says what the file calls its bones - Mixamo, UE4, UE5 Mannequin, Fortnite, MetaHuman, Rigify, the metarig, TF2, SMPL-X and more - and **Auto-Detect** reads them, so the usual cases need no choice at all. Mixamo names without the `mixamorig:` in front, which is what CMU's converted takes and most BVH exports carry, are recognised too.
-- A BVH's own frame rate is read from the file and the scene set to match, and whatever the rate the clip is re-timed to the runtime's 30 fps - a 120 fps take keeps its length instead of playing four times fast.
-- **Style Name**, **Speed** and **Allowed Durations** are yours to change; Import fills in the last two from the clip. Everything the runtime tests is tested before the file is written, so a style it would refuse is refused here instead, with the reason, and nothing half-written is left in the folder.
+**Pose to pose**
+- Tick **End on Pose Key** on a take of a person. Move, turn and pose the character and key it on the frames it should arrive at - say 50 and 100 - and the first take is made up to 50 and the next up to 100, each from the pose it starts on.
+- The keys stay as they are, and **Bake** marks the frames made as generated. Keys can be 19 to 59 frames apart at 30 fps.
 
-**Styles from the scene as well**
-- An animation that is already on a MotionBricks character can be saved out the same way with **Save as Style**.
+**Flowing through the poses**
+- **Poses to Use** (1 to 4) gives the target a speed instead of a stop, and **Transition Early By** lets the next take start on the way to the key instead of at it, so the character moves through its poses without halting - the way NVIDIA's Inbetweener does it.
+- **Arrive in a Clip Pose** makes a take end in a pose of a style's clip, placed at its Target or 2 m ahead, and lets the model pick how long it takes.
+
+**MMD characters join the Retarget panel**
+- A PMX model brought in with mmd_tools is recognised as **MMD (PMX)** and takes a take like any other character: pick it as the Target and press **Retarget to Character**.
+- Japanese names as they are, with `.L` / `_L` endings, or through mmd_tools' English dictionary - **Auto-Detect** reads all of them.
+- The legs are switched to FK for the bake, so the foot IK no longer holds them still; the feet stay on the floor and the whole body, D-bone legs included, follows.
 
 ### Changed
 
-**A new style shows up at once**
-- Converting or saving re-reads the styles folder. Before, the engine kept the list it loaded at startup, so a style replaced under the same name kept its old motion.
-
-**UE4 joins the rig types**
-- The UE4 and UE5 mannequins share one skeleton - UE5 only added IK bones to it - so both are in the list and both map the same way.
+- **Install Engines** now updates too: a runtime file that differs from the published one is replaced, so a newer Kimodo, ARDY or MotionBricks runtime reaches people who already have an older one. **Check for Updates** next to it says what is newer without downloading it. A style you made or edited is never overwritten.
+- The **+** in the MotionBricks panel asks which kind of character to add.
+- The **Style** a character was given stays put when styles are added or saved. Before, adding one could slide a character onto another style.
 
 ### Fixed
 
-- A style converted from a Mixamo download no longer throws the character tens of metres through the floor.
-- A style converted from a character with longer legs than the robot - a Fortnite dance - no longer hovers and bobs; its feet stay on the floor.
-- The check after **Convert to Style** walks the style at its own Speed, so a clip performed on the spot is no longer reported as running away.
-
-### Removed
-
-- **Pull the Arms Back if Refused** - the clips it rescued convert properly now, with their arms.
+- Baking a take in Blender 4.4 and 4.5 no longer stops with an error.
+- **Reset All** on an MMD character puts the skirt and hair back too. Before, only the bones it knew went back to rest and the physics bones stayed where the last run ended, metres behind the body. Reset All also turns the leg IK back on.
+- A retargeted MMD model's skirt and hair start at the character and come along with it. Before, the physics started where the model was built and trailed 1.7 m behind the body for the whole take.
+- A **Kimodo** take can be retargeted onto a character again. **Retarget to Character** used to stop with "Unknown source skeleton 'soma30'" for every Kimodo rig, whatever the target.
 
 ---
 
@@ -64,8 +66,11 @@ folder. **The download is about 18 GB, so it takes a long time** — anywhere
 from several minutes to over an hour depending on your connection. A progress
 bar in the same panel shows each file as it arrives, and Blender stays usable
 meanwhile. If it stops partway, press **Install Engines** again: files already
-downloaded are kept, and only the rest is fetched. When it is done, all three
-engines show **ready**. MotionBricks needs Blender 5.2 or newer.
+downloaded are kept, and only the rest is fetched. It updates as well: run it again
+after a new MotionForge release and anything newer is replaced; **Check for Updates**
+shows what that would be first. When it is done, all three
+engines show **ready**. The MotionBricks robot needs Blender 5.2 or newer;
+the person (SOMA Human) works from Blender 5.0.
 
 Press `N` in the 3D viewport and the **MotionForge** tab is there.
 
@@ -161,7 +166,7 @@ Each character carries its own settings, shown under the list:
 | Control | What it does |
 | --- | --- |
 | **Character list** | Every MotionBricks character in the scene, one per row. The **tick box** decides who takes part; the highlighted row is the one you are editing. |
-| **+** / **−** | Adds a character at the 3D cursor, or takes the selected one out of the list. |
+| **+** / **−** | **+** asks for a **SOMA Human** or a **Unitree G1 Robot** and adds it at the 3D cursor; **−** takes the selected one out of the list. |
 | **Eyedropper** | Adds the selected armature to the list, if it is a MotionBricks character. |
 | **With a Body** | A new character gets a simple body, weighted to the skeleton. Bones alone are hard to follow while a character walks around. Untick it for bones only. |
 
@@ -175,6 +180,8 @@ Each character carries its own settings, shown under the list:
 | **Target** | The object this one walks to. The **+** beside it makes one. Turn the object and the character faces that way on arrival. |
 | **Speed** | Metres per second. Leave it at zero to use the style's own pace. A style with no pace of its own, like *Idle*, stays where it is. |
 | **Seed** | Changes where the stride begins. If a walk lands awkwardly, try another number. |
+| **Take list** | The takes of the highlighted character, under its name. **+** adds one with the settings it has now, **−** removes the selected one. The tick box leaves a take out, and the play button shows that stretch of the timeline. |
+| **End on Pose Key** | People only. The take ends on the next pose key and takes its length from it. |
 
 | Shared | What it does |
 | --- | --- |
@@ -195,7 +202,7 @@ Each character carries its own settings, shown under the list:
 | --- | --- |
 | **Source** | The rig carrying the motion. Usually left as the generated rig. |
 | **Target** | *Your* character's armature. |
-| **Rig Type** | The naming convention of the target (UE5, Fortnite, Mixamo, Rigify, SMPL-X…). **Auto-Detect** usually gets it right. |
+| **Rig Type** | The naming convention of the target (UE5, Fortnite, Mixamo, Rigify, SMPL-X, MMD…). **Auto-Detect** usually gets it right. |
 | **Auto-Align Rest Pose** | Swings the target's limbs onto the source's rest pose first, so an A-pose character does not look broken. |
 | **Auto Scale Motion** | Scales how far the body travels to fit the target's height. |
 | **Match Floor Contact** | Lifts or lowers the target each frame so its feet meet the floor. |
@@ -385,6 +392,70 @@ the walk moves onto your own character, scaled to their size, feet on the
 floor. The head and neck stay where they are: MotionBricks moves the body and
 the arms, and has nothing to say about the head.
 
+**A person (SOMA Human)**
+
+Press **+** and pick **SOMA Human**. The person is built on the same 30 joints
+Kimodo uses - and, with fingers on, the 77 - so anything made for a Kimodo
+character works on it too, Retarget included.
+
+1. Open the **Styles** box. The person's styles - idle, walk, slow walk, jog, run,
+   injured, stealth, scared, zombie, happy, boxing, gun, and elbow and hand
+   crawling - arrive with **Install Engines**. If any is missing, or you deleted
+   one, **Make Missing** makes it with Kimodo; it takes a few minutes, Blender
+   stays usable, and it makes only what is missing.
+2. Pick a style and press **Generate Motion**, then **Bake**, exactly as for the robot.
+3. To add a style of your own, make the motion you want - generate it, retarget a
+   mocap file onto the person, or key it - type a name under **New Style** and
+   press **Save as Style**. It needs at least 60 frames.
+
+**Takes**
+
+A take is one stretch of a character's timeline with its own **Style**, **Go**,
+**Heading**, **Speed**, **Seed** and **Duration**. Press **+** beside the take list
+to add one; picking a take brings its settings back. The takes run one after the
+other: three takes of 1, 2 and 1.5 seconds come out as frames 1-30, 31-90 and
+91-135, and one press of **Generate Motion** makes them all, each starting from
+where the one before ended - same place, same pose. **Bake** writes them into one
+animation. The play button on a take shows just that stretch, and a take whose
+tick box is off sits out. Change the settings of a take and press **Generate
+Motion** again to make the whole run over.
+
+**Pose to pose (people only)**
+
+Tick **End on Pose Key** on a take. Move, turn and pose the character - you can
+move the object itself - and key it on the frames it should arrive at, say 50
+and 100. The first take is made up to 50 and the next up to 100, each from the
+pose it starts on, on the same character. A take that ends on a key takes its
+length from the keys, so **Duration** is greyed out for it. Keys can be 19 to 59
+frames apart at 30 fps; farther or closer than that, the take says which keys.
+A take after one that ends on a key simply walks on from the pose it ended on.
+
+**Flowing through the poses**
+
+By default a take that ends on a key *stops* there: one target pose tells the
+model where to stop. Two settings change that, the way NVIDIA's Inbetweener has them:
+
+- **Poses to Use** (1 to 4): how many poses of the target the model is shown.
+  With more than one, the frames after the key - the way your keys carry the
+  character on to the next one - give it a speed, so it arrives moving.
+- **Transition Early By**: frames dropped from the end of the take, so the next
+  take starts on the way to the key instead of at it. At least four frames always
+  play, and the last take is not shortened.
+
+Try 3 and 8 on two takes that end on keys: the character passes through the key
+in one movement. Leave them at 1 and 0 and it stops on each.
+
+**Arrive in a Clip Pose**
+
+Instead of a key, a take can end in a pose of a style's clip: pick the **Clip**
+and the **Clip Time** to take it from, and put an object in **Target** where the
+character should end up - with no target it is 2 m ahead. The model picks how
+long the take is within **Fewest** and **Most** tokens (four frames a token), and
+**Poses to Use** and **Transition Early By** work as above.
+The keys stay, and **Bake** marks the frames it made as generated so the next
+**Generate Motion** treats only your own keys as poses. **Continue** cannot be
+used with these takes.
+
 **Make a style from a file**
 
 A style is a short clip MotionBricks is shown before it is asked for anything,
@@ -394,7 +465,7 @@ and it can come from any animation you have:
    download, an engine's export, anything with a skeleton in it.
 2. **Source** fills in and **Rig Type** is read from the bone names. If it
    says *unrecognised*, pick the type by hand: Mixamo, UE4, UE5 Mannequin,
-   Fortnite, MetaHuman, Rigify, the metarig, TF2 or SMPL-X.
+   Fortnite, MetaHuman, Rigify, the metarig, TF2, SMPL-X or MMD.
 3. Set **Style Name**, **Speed** - the walking speed the style is meant to be
    used at - and **Allowed Durations**, how many of the planner's generation
    lengths may use it. Import fills both in (picking a Source fills Speed): the clip's own speed, and all 11,
@@ -411,13 +482,14 @@ what you imported stays where it is.
 A style can also be made from what a MotionBricks character is already doing -
 a generated take, a retargeted walk, your own keys. **Save as Style** in the
 same panel writes the active character's animation out exactly the same way.
+A style you pick for a character stays picked when styles are added.
 
 ## Source rig vs. target rig, plainly
 
 - **Source rig** = the armature MotionForge *makes* and animates. You never have
   to rig it; the model already knows its skeleton.
 - **Target rig** = any other armature you want the motion on. It can be an
-  Unreal Engine mannequin, a Mixamo character, a Rigify rig, an SMPL-X body —
+  Unreal Engine mannequin, a Mixamo character, a Rigify rig, an MMD model, an SMPL-X body —
   anything with reasonably named bones that matches one of the presets.
 
 The flow is always the same: **generate on a source → retarget onto a target.**
