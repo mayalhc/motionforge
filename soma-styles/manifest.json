@@ -1,0 +1,75 @@
+{
+  "format": "motionforge-soma-styles-v1",
+  "files": [
+    {
+      "path": "elbow_crawling.npz",
+      "bytes": 216522,
+      "sha256": "67116407905f7ba182d615f54e7d5c819926522b770a19b9f928bffbadc7c4ec"
+    },
+    {
+      "path": "hand_crawling.npz",
+      "bytes": 216522,
+      "sha256": "6f20ef0b807aec758e91dad5ca4908f9baf37ef6f6061d9cc8488f92a6a29a1a"
+    },
+    {
+      "path": "idle.npz",
+      "bytes": 173322,
+      "sha256": "b5b072a3db7e4ce48f5cf97b7b6956de1d54bd50effabacabc0e2984734f2885"
+    },
+    {
+      "path": "injured_walk.npz",
+      "bytes": 216522,
+      "sha256": "7894e7d44ff1bde1e9df1500edd2d95a4a8ac49b0239f212f5fc244b13a6b9d6"
+    },
+    {
+      "path": "jog.npz",
+      "bytes": 216522,
+      "sha256": "da6070b09da252ae17db866707b0d153f7c13624769f902715fd98559dbb9466"
+    },
+    {
+      "path": "run.npz",
+      "bytes": 216522,
+      "sha256": "17b2bbfc5d0f627ad9e38464d96fa5b405829f3bcbfa238dd799cd1793671834"
+    },
+    {
+      "path": "slow_walk.npz",
+      "bytes": 216522,
+      "sha256": "787aa7446bc4572b72133ede2369f318766663a5ce80ef4f1a5f07c5d30466e3"
+    },
+    {
+      "path": "stealth_walk.npz",
+      "bytes": 216522,
+      "sha256": "cef5e53054e224cd96bffecaa9970e40ec0ac31e7b6642db5de7e4188735e5b0"
+    },
+    {
+      "path": "walk.npz",
+      "bytes": 216522,
+      "sha256": "a7ee904cb8da902c885a99ace98368af47fe2cf41730dc87bcc87cbae7ac32ac"
+    },
+    {
+      "path": "walk_boxing.npz",
+      "bytes": 216522,
+      "sha256": "02e209be9d27fda4310868fbd18b683e78275142b34832d61924677113757572"
+    },
+    {
+      "path": "walk_gun.npz",
+      "bytes": 216522,
+      "sha256": "c5558ebe0c70676bfe837b738856455fb9233bc7670b1b95232f5876cff9759d"
+    },
+    {
+      "path": "walk_happy_dance.npz",
+      "bytes": 216522,
+      "sha256": "3f12fec5cf76858a349a0ec919df6cecf1ab7f459c2dd04ff88b3b5cec6c98e0"
+    },
+    {
+      "path": "walk_scared.npz",
+      "bytes": 216522,
+      "sha256": "97a684d6484c4fafc5f252afeb924524cf505f9fe5ac1290b4805299b4f97b69"
+    },
+    {
+      "path": "walk_zombie.npz",
+      "bytes": 216522,
+      "sha256": "b682785fea38630106cdc7664935c0912f08f5b67c802f496ef3e8ceed003fb1"
+    }
+  ]
+}
