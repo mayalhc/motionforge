@@ -31,6 +31,23 @@ MotionForge는 NVIDIA의 ARDY 모션 모델을 Blender 옆에서 실행하고, �
 - **Poses to Use**(1~4)는 타겟에 멈춤 대신 속도를 주고, **Transition Early By**는 다음 테이크가 키에 도착하기 전, 가는 도중에 시작하게 해서 포즈를 지나며 멈추지 않고 움직입니다. NVIDIA Inbetweener와 같은 방식입니다.
 - **Arrive in a Clip Pose**는 스타일 클립의 한 포즈(Target 위치, 없으면 2 m 앞)에서 끝나는 테이크를 만들고 길이는 모델이 고릅니다.
 
+**여러 사람을 한꺼번에** (patch-gg의 crowdbricks에서 가져온 아이디어)
+- 캐릭터를 하나씩이 아니라 함께 만들어서, 열 명이면 약 두 배 빠릅니다. **Generate Motion**과 **Live** 모두 그렇습니다.
+- **+ > Crowd**가 원하는 수만큼 사람을 3D 커서 주위에 세우고, 사람마다 스타일과 가는 방향을 따로 주어 바로 모션을 만듭니다.
+- **+ > Fork Futures**가 선택한 사람을 같은 과거를 가진 여러 명으로 나누어 각자 다른 쪽으로 가게 합니다. **Generate Motion**을 누르면 각자 선 자리에서 이어서 갑니다.
+- **Over an Obstacle**을 켠 테이크는 장애물까지 걸어가서 넘거나, 아래로 지나거나, 올라앉습니다: **Vault**, **Hop**, **Duck**, **Sit**. **+ > Obstacle**로 장애물을 놓고, 초록 화살표가 사람이 다가오는 방향입니다. 장애물 모션은 NVIDIA의 샘플 데이터라서 **Get Obstacle Data**를 누르면 라이선스를 보여 주고 내 컴퓨터에 한 번 받아옵니다(16 MB).
+
+**앞으로 쭉**
+- 사람의 **Go**에 **Straight Ahead**가 생겼고, Live의 **Steer With**에도 같은 항목이 있습니다. 사람이 지금 바라보는 방향으로 계속 걸어가서, 여러 명을 3D 커서나 타겟 없이 움직일 수 있습니다.
+
+**Cascadeur도 같은 엔진 사용**
+- Cascadeur의 ARDY Live에서 **ARDY**, **Kimodo**, **MotionBricks** 중 엔진을 고를 수 있습니다. 셋 모두 여기서 설치한 Engine Folder를 그대로 쓰므로 따로 설치할 것이 없습니다.
+- Kimodo Roundtrip도 같은 엔진으로 동작합니다. Cascadeur에서 잡은 키포즈를 넣으면 그 포즈를 지나가는 Kimodo 모션이 캐릭터로 돌아옵니다.
+- **Install Engines**가 Cascadeur 플러그인도 Engine Folder에 함께 내려받습니다. Cascadeur에 넣으려면 **Install Cascadeur Plug-in**을 누르거나 Engine Folder의 `install_cascadeur_plugin.bat`을 실행하세요. 관리자 권한을 묻습니다.
+
+**급한 방향 전환**
+- 사람이 방향을 급하게 바꿔도 새 방향을 따라잡느라 달려가지 않습니다. 회전을 조금 천천히 하고 속도는 고르게 유지됩니다.
+
 **MMD 캐릭터를 Retarget 패널에서 사용**
 - mmd_tools로 가져온 PMX 모델이 **MMD (PMX)**로 인식되어, 다른 캐릭터처럼 Target으로 고르고 **Retarget to Character**를 누르면 됩니다.
 - 일본어 이름 그대로, `.L` / `_L` 끝, mmd_tools의 영어 사전으로 바꾼 이름 모두 **Auto-Detect**가 읽습니다.
@@ -434,6 +451,20 @@ Blender의 다른 기능이 이 모션을 보지 못하므로, 리타겟과 내�
 
 MotionBricks 캐릭터가 이미 하고 있는 동작 - 생성한 테이크, 리타겟한 걸음, 직접 찍은
 키 - 도 같은 패널의 **Save as Style**로 똑같은 방식으로 스타일이 됩니다.
+
+## 군중, 갈래, 장애물
+
+**사람(SOMA Human)** 에 쓰는 기능입니다.
+
+**군중.** **+ > Crowd**에서 인원, 퍼지는 폭, 스타일을 섞을지를 정합니다. 사람들이 3D 커서 주위에 서고, 각자 다른 쪽을 보고 다른 방향으로 가며, 모션이 한꺼번에 만들어집니다. **Bake**로 쓰거나, 누구든 스타일이나 방향을 바꾸고 **Generate Motion**을 다시 누릅니다.
+
+**갈래.** 사람을 한 명 생성한 뒤 **+ > Fork Futures**에서 갈래 수와 벌어지는 정도를 정합니다. 첫 번째 사람이 끝난 자리에 같은 과거를 가진 그만큼의 사람이 서 있습니다. 각자의 방향, 속도, 스타일을 정하고 **Generate Motion**을 누르면 모두 거기서 이어서 갑니다. **Continue**는 자동으로 켜집니다.
+
+**장애물.** **+ > Obstacle**이 3D 커서에 vault, hop, duck, sit 중 하나를 놓습니다. 초록 화살표가 사람이 다가오는 방향이고, 장애물을 돌리면 방향이 바뀝니다. 테이크에서 **Over an Obstacle**을 켜고 장애물을 고르면 사람이 다가가서 넘거나, 아래로 지나거나, 올라앉고, 다음 테이크는 건너편에서 이어집니다. Sit은 의자에 앉은 채로 끝나고, 그다음 테이크는 의자에서 시작합니다.
+
+테이크에는 장애물 목록이 있습니다. **+**를 누를 때마다 새 장애물이 목록에 하나씩 추가되고, 사람은 목록 순서대로 하나씩 넘어갑니다. 어느 쪽에서 다가가도 됩니다. 장애물은 **Generate Motion**에서만 만들어지고, **Live**는 걷기만 해서 그냥 지나칩니다.
+
+처음에는 테이크에 **Get Obstacle Data**가 보입니다. 이 클립은 NVIDIA의 샘플 모션으로, 평가와 테스트용인 NVIDIA Sample Data Evaluation License 아래에 있습니다. MotionForge에는 들어 있지 않고, 버튼이 NVIDIA 저장소에서 Engine Folder로 받아 옵니다. 만든 결과를 쓰기 전에 라이선스를 읽어 보세요.
 
 ## 소스 리그와 타겟 리그
 

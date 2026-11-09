@@ -1,0 +1,226 @@
+{
+  "format": "cascadeur-plugin-manifest-v1",
+  "plugin": "MotionForge Cascadeur plug-in and engine service, relative to the Engine Folder",
+  "files": [
+    {
+      "path": "install_cascadeur_plugin.bat",
+      "bytes": 507,
+      "sha256": "5b049c2d42884c0dd37772ea8f8fa90c6d967b2e0454e71f792cda18dcb812c2"
+    },
+    {
+      "path": "start_ardy.bat",
+      "bytes": 1076,
+      "sha256": "5679b04b2f5995b804d4f42f43a6679ff25cc76521b90370bd1b50c63afa0e26"
+    },
+    {
+      "path": "stop_ardy.bat",
+      "bytes": 368,
+      "sha256": "a399c7d791de7304ab743b630c19dcb8d831e774139e71abda68413d9da7798b"
+    },
+    {
+      "path": "plugins/cascadeur/ARDY.casc",
+      "bytes": 1980661,
+      "sha256": "5a0f5e2e6733efbb092c4f38248b4f392b653edaff0e782bdfa2ad97b6c06d9e"
+    },
+    {
+      "path": "plugins/cascadeur/Kimodo.casc",
+      "bytes": 3233208,
+      "sha256": "d7472e291824189ac848f72993ddaf85660f4bdb853ead7df013b1e08dede474"
+    },
+    {
+      "path": "plugins/cascadeur/__init__.py",
+      "bytes": 53,
+      "sha256": "61ca1ee5301e32838532ab6ad7645a1236eb0cd0408dd1f6157369575318ac79"
+    },
+    {
+      "path": "plugins/cascadeur/ardy_apply.py",
+      "bytes": 15324,
+      "sha256": "956fa0291ea0c542a8c4e80ae79c08119f415a9f625734af9709ca52c583357c"
+    },
+    {
+      "path": "plugins/cascadeur/ardy_live.py",
+      "bytes": 25145,
+      "sha256": "f48eb12e35d68c09ab84a9149b88571df7e968b3a6aee3f7b3ff80c470053d98"
+    },
+    {
+      "path": "plugins/cascadeur/ardy_stream.py",
+      "bytes": 11181,
+      "sha256": "10828544af3e8786ad229604556b0fc4d4ab2a9a218b9a3d693aece6cccfbc3c"
+    },
+    {
+      "path": "plugins/cascadeur/cascadeur_receiver.py",
+      "bytes": 44500,
+      "sha256": "f530c28a68ff0607c268e5048e3825e3770baae7001c9d1a2394608687e63fab"
+    },
+    {
+      "path": "plugins/cascadeur/engine_service.py",
+      "bytes": 41857,
+      "sha256": "0f2a886f1469e8a4f7b0f658d26df64b50a4d37c84d924456af0b70b1f9604e3"
+    },
+    {
+      "path": "plugins/cascadeur/install_plugin.bat",
+      "bytes": 9911,
+      "sha256": "f5b77d6a8d2a236f3b550f37d32ca4c3d18ad5a5da287e8c2e1c3d2f953511db"
+    },
+    {
+      "path": "plugins/cascadeur/kimodo_roundtrip.ini",
+      "bytes": 601,
+      "sha256": "9232c61836711680c114637377598f82791d354dc8d3fb0fa8121961a1385b66"
+    },
+    {
+      "path": "plugins/cascadeur/kimodo_roundtrip.py",
+      "bytes": 106632,
+      "sha256": "aa78d6e8eff7297557aed66c172c6f4b536c5a5b4ab405ee943cfe5b37cca490"
+    },
+    {
+      "path": "plugins/cascadeur/live_link.py",
+      "bytes": 34350,
+      "sha256": "d0ae5ebc187913589072628d3c63bd83c85d1002cd6a99903783a2bef7a05efa"
+    },
+    {
+      "path": "plugins/cascadeur/metaarkit.py",
+      "bytes": 16047,
+      "sha256": "7e9e93bc03fbf1d8a7e1b3dc77b651c1c977b9a61a3f5bbfb077d64e192a7d67"
+    },
+    {
+      "path": "plugins/cascadeur/quadruped_autorig.py",
+      "bytes": 30769,
+      "sha256": "f30e2c5bd285e621ee39cfd238f76f0550d4fddf9af404bb0275a0058f059443"
+    },
+    {
+      "path": "plugins/cascadeur/quadruped_presets.py",
+      "bytes": 4733,
+      "sha256": "6cdd0a603cdfdb42048be51e6a2866de4beb3ed4301a46284f5acfc528c3b58a"
+    },
+    {
+      "path": "plugins/cascadeur/savgol.py",
+      "bytes": 3446,
+      "sha256": "5792ea7d0a9c62d4680f8c29b7e49c54c5e376023f34d22d1610521d1e85d7c7"
+    },
+    {
+      "path": "plugins/cascadeur/soma30_skeleton.py",
+      "bytes": 2328,
+      "sha256": "da99c106136c66d9c6f63483be13b96b44057fb890d063e5eab34d5141c669c4"
+    },
+    {
+      "path": "plugins/cascadeur/soma77_skeleton.py",
+      "bytes": 1794,
+      "sha256": "13ed3faa794dcf696436e1f520c5d4cd76e3eafeff200c9ebaf0e376b5861994"
+    },
+    {
+      "path": "plugins/cascadeur/soma_apply.py",
+      "bytes": 5537,
+      "sha256": "2aeeff2afd58760edb1f9e56e759129d635c1db12f1be89916bb76cfd88706c1"
+    },
+    {
+      "path": "plugins/cascadeur/mbcore/__init__.py",
+      "bytes": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "plugins/cascadeur/mbcore/engines.py",
+      "bytes": 161,
+      "sha256": "7fbadf074c5beb9d178f437e04a96d44f23d507fdcc53782163aa97d4725aaab"
+    },
+    {
+      "path": "plugins/cascadeur/mbcore/mb_soma.py",
+      "bytes": 27316,
+      "sha256": "85c866d1b29e1f86423a13a5260655dd8af01d0309e4b35336966e19691eea51"
+    },
+    {
+      "path": "plugins/cascadeur/mbcore/mb_soma_engine.py",
+      "bytes": 13988,
+      "sha256": "712207fbeb3d765ea0d1d64e465472b8996c251812a03c8de09e40f324ca2383"
+    },
+    {
+      "path": "plugins/cascadeur/mbcore/mb_soma_worker.py",
+      "bytes": 1563,
+      "sha256": "8e65f002593a8836a37891f06da7d2143970d8f42671c796f8322accd37489f6"
+    },
+    {
+      "path": "plugins/cascadeur/mbcore/soma30.py",
+      "bytes": 3643,
+      "sha256": "20548dd3dad31fc6f94259f5a87902f3bdb1b89156fa8ed40cfd87259b1200b5"
+    },
+    {
+      "path": "plugins/cascadeur/mbcore/soma_offsets.json",
+      "bytes": 2518,
+      "sha256": "2c8739710e2e3be3f2f626676c2689816f65da015dcd1b39e9a7f916967581b3"
+    },
+    {
+      "path": "plugins/cascadeur/models/__init__.py",
+      "bytes": 53,
+      "sha256": "61ca1ee5301e32838532ab6ad7645a1236eb0cd0408dd1f6157369575318ac79"
+    },
+    {
+      "path": "plugins/cascadeur/quadruped_presets/cascadeur_sabertooth.json",
+      "bytes": 1658,
+      "sha256": "4a6f24ca3e87f12dc57f886ae7c930f1e5cf4ed756b02208a6d6aa74877e7e4a"
+    },
+    {
+      "path": "plugins/cascadeur/quadruped_presets/unreal_fortnite.json",
+      "bytes": 1522,
+      "sha256": "234c6eb67bc122d42199ca68b2882ef3cb57848bb4b2a46e2a36720d393026ba"
+    },
+    {
+      "path": "plugins/cascadeur/models/ardy_live/__init__.py",
+      "bytes": 53,
+      "sha256": "61ca1ee5301e32838532ab6ad7645a1236eb0cd0408dd1f6157369575318ac79"
+    },
+    {
+      "path": "plugins/cascadeur/models/ardy_live/model.py",
+      "bytes": 29070,
+      "sha256": "b1f53881c264741b4f4fb54dbf3def3c0862da744ddf13789b847be3b0a9fa79"
+    },
+    {
+      "path": "plugins/cascadeur/models/ardy_live/view.qml",
+      "bytes": 14263,
+      "sha256": "9f47fafc44565c346ebdb113c64c6bd9db1d7956f3a382cca633f027c45b6add"
+    },
+    {
+      "path": "plugins/cascadeur/models/kimodo_roundtrip/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "plugins/cascadeur/models/kimodo_roundtrip/model.py",
+      "bytes": 32626,
+      "sha256": "0447ff535803c4d2274bc221d8a9654952fe21927a35196a4da522914fd63369"
+    },
+    {
+      "path": "plugins/cascadeur/models/kimodo_roundtrip/view.qml",
+      "bytes": 17963,
+      "sha256": "8afc2cd12238ac5954fea3d0f39983e73653da83bdc24e03fa9f1beb65c86afd"
+    },
+    {
+      "path": "plugins/cascadeur/models/metaarkit/__init__.py",
+      "bytes": 53,
+      "sha256": "61ca1ee5301e32838532ab6ad7645a1236eb0cd0408dd1f6157369575318ac79"
+    },
+    {
+      "path": "plugins/cascadeur/models/metaarkit/model.py",
+      "bytes": 14985,
+      "sha256": "110ebca16f8abf0fa9396d8e7037bb2c3b4166ade4c06f667e2e5aa483f9d732"
+    },
+    {
+      "path": "plugins/cascadeur/models/metaarkit/view.qml",
+      "bytes": 8221,
+      "sha256": "34fe12d007080dd7e8dd2a427394ddceef28bd4aaa15d176a16090fadc08728c"
+    },
+    {
+      "path": "plugins/cascadeur/models/quadruped_autorig/__init__.py",
+      "bytes": 53,
+      "sha256": "61ca1ee5301e32838532ab6ad7645a1236eb0cd0408dd1f6157369575318ac79"
+    },
+    {
+      "path": "plugins/cascadeur/models/quadruped_autorig/model.py",
+      "bytes": 12092,
+      "sha256": "223628fe43201fd2d5d4902155df9eec255ed0df2d7df865a670b14d15c3403d"
+    },
+    {
+      "path": "plugins/cascadeur/models/quadruped_autorig/view.qml",
+      "bytes": 6089,
+      "sha256": "dec0f9190a6406d081460cafc83a6c5ef24436f05103c962d434f9be466f3771"
+    }
+  ]
+}

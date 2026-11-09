@@ -34,6 +34,23 @@ straight to Cascadeur.
 - **Poses to Use** (1 to 4) gives the target a speed instead of a stop, and **Transition Early By** lets the next take start on the way to the key instead of at it, so the character moves through its poses without halting - the way NVIDIA's Inbetweener does it.
 - **Arrive in a Clip Pose** makes a take end in a pose of a style's clip, placed at its Target or 2 m ahead, and lets the model pick how long it takes.
 
+**Many people at once** (idea from patch-gg's crowdbricks)
+- Characters are made together instead of one after another, which makes ten of them about twice as fast, in **Generate Motion** and in **Live**.
+- **+ > Crowd** adds as many people as you ask for around the 3D cursor, each with a style and a way to go of its own, and makes their motion straight away.
+- **+ > Fork Futures** splits the selected person into several copies with the same past, each heading its own way. **Generate Motion** carries each one on from where they stand.
+- **Over an Obstacle** makes a take walk up to an obstacle and go over it, under it or onto it: **Vault**, **Hop**, **Duck** and **Sit**. **+ > Obstacle** places one; its green arrow is the way a person comes at it. The obstacle motion is NVIDIA's sample data, so **Get Obstacle Data** downloads it to your computer once (16 MB) after showing its licence.
+
+**Straight ahead**
+- A person's **Go** has a new choice, **Straight Ahead**, and Live's **Steer With** has the same one. Every person keeps walking the way it is facing, so a crowd needs no 3D cursor or target to move.
+
+**Cascadeur uses the same engines**
+- ARDY Live in Cascadeur has an engine choice: **ARDY**, **Kimodo** or **MotionBricks**. All three run on the Engine Folder you installed here, so nothing else needs installing.
+- Kimodo Roundtrip also runs on it: keyposes in Cascadeur go in, and a Kimodo motion that passes through them comes back onto the character.
+- **Install Engines** now also downloads the Cascadeur plug-in into the Engine Folder. To put it into Cascadeur, press **Install Cascadeur Plug-in** or run `install_cascadeur_plugin.bat` from the Engine Folder; it asks for Administrator.
+
+**Sharp turns**
+- A person who turns sharply no longer sprints to catch up with the new direction; the turn is taken a little slower and the speed stays even.
+
 **MMD characters join the Retarget panel**
 - A PMX model brought in with mmd_tools is recognised as **MMD (PMX)** and takes a take like any other character: pick it as the Target and press **Retarget to Character**.
 - Japanese names as they are, with `.L` / `_L` endings, or through mmd_tools' English dictionary - **Auto-Detect** reads all of them.
@@ -483,6 +500,20 @@ A style can also be made from what a MotionBricks character is already doing -
 a generated take, a retargeted walk, your own keys. **Save as Style** in the
 same panel writes the active character's animation out exactly the same way.
 A style you pick for a character stays picked when styles are added.
+
+## Crowds, futures and obstacles
+
+These are for a **person** (SOMA Human).
+
+**A crowd.** **+ > Crowd** asks how many people, how wide to spread them and whether to mix the styles. They stand around the 3D cursor, each turned and sent its own way, and their motion is made at once. Press **Bake** to write it, or change anyone's style or heading and press **Generate Motion** again.
+
+**Futures.** Generate a person, then **+ > Fork Futures** and say how many futures and how far apart they head. You get that many people standing where the first one ended, with the same past. Set each one's heading, speed or style and press **Generate Motion**: every one carries on from there. **Continue** is switched on for you.
+
+**An obstacle.** **+ > Obstacle** puts a vault, hop, duck or sit at the 3D cursor. The green arrow is the way a person comes at it; turn the obstacle to change that. On a take, tick **Over an Obstacle** and pick it. The person walks up to it and goes over, under or onto it, and the next take carries on from the far side. Sit leaves the person seated; a take after it starts from the chair.
+
+A take has a list of obstacles: **+** adds a new one to it, and the person goes over them in the order of the list, one after the other. The person can come at each from any side. Obstacles are made by **Generate Motion**; **Live** only walks, so a person in Live goes straight past one.
+
+The first time, the take shows **Get Obstacle Data**. The clips are NVIDIA's sample motion, under the NVIDIA Sample Data Evaluation License for evaluating and testing NVIDIA technologies. MotionForge does not carry them: the button downloads them from NVIDIA's repository to your Engine Folder, and you can read the licence there before you use what you make with them.
 
 ## Source rig vs. target rig, plainly
 
